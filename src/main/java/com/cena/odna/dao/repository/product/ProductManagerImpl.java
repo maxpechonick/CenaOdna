@@ -12,7 +12,7 @@ import java.util.List;
  * Created by Admin on 12.12.2016.
  */
 @Repository
-public class ProductManagerImpl extends GenericDAOImpl<Product, Long> implements ProductManager{
+public class ProductManagerImpl extends GenericDAOImpl<Product> implements ProductManager{
 
     protected Class<Product> getClazz() {
         return Product.class;

@@ -5,12 +5,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 /**
  * Created by Admin on 21.12.2016.
  */
 @SpringBootApplication
 @ComponentScan("com.cena.odna.*")
+@CrossOrigin(origins = "http://localhost:3000")
 public class ServerApplication {
 
     public static void main(String[] args) {

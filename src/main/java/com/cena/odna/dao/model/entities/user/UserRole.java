@@ -18,7 +18,7 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "USER_ROLES", catalog = "test", uniqueConstraints = @UniqueConstraint(columnNames = {"role", "username"}))
-public class UserRole implements ModelObject<Long> {
+public class UserRole implements ModelObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_role_seq")

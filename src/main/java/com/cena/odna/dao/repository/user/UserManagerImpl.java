@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
  * Created by Admin on 12.12.2016.
  */
 @Repository
-public class UserManagerImpl extends GenericDAOImpl<User, Long> implements UserManager {
+public class UserManagerImpl extends GenericDAOImpl<User> implements UserManager {
 
     public User findByUserName(String username) {
         return null;

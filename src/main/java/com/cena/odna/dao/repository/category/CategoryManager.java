@@ -7,5 +7,5 @@ import com.cena.odna.dao.model.entities.category.Category;
 /**
  * Created by Admin on 12.12.2016.
  */
-public interface CategoryManager extends GenericDAO<Category, Long> {
+public interface CategoryManager extends GenericDAO<Category> {
 }

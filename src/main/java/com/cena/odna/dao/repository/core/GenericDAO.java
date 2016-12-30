@@ -8,13 +8,13 @@ import java.util.List;
 /**
  * Created by Admin on 12.12.2016.
  */
-public interface GenericDAO<MODEL extends ModelObject<PK>, PK> {
+public interface GenericDAO<MODEL extends ModelObject> {
 
-    MODEL findByPK(PK id) throws ManagerException;
+    MODEL findByPK(Long id) throws ManagerException;
 
     List<MODEL> findAll();
 
-    List<MODEL> getByPKs(List<PK> pks);
+    List<MODEL> getByPKs(List<Long> pks);
 
     void remove(MODEL model) throws ManagerException;
 

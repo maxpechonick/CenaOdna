@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by Admin on 12.12.2016.
  */
-public abstract class GenericDAOImpl<MODEL extends ModelObject<PK>, PK> implements GenericDAO<MODEL,PK> {
+public abstract class GenericDAOImpl<MODEL extends ModelObject> implements GenericDAO<MODEL> {
 
     private static final Logger logger = LoggerFactory.getLogger(GenericDAOImpl.class);
 
@@ -22,7 +22,7 @@ public abstract class GenericDAOImpl<MODEL extends ModelObject<PK>, PK> implemen
 
     protected abstract Class<MODEL> getClazz();
 
-    public MODEL findByPK(PK id) throws ManagerException {
+    public MODEL findByPK(Long id) throws ManagerException {
         if (id == null) {
             throw new ManagerException("id mustn't be equals null");
         }
@@ -37,7 +37,7 @@ public abstract class GenericDAOImpl<MODEL extends ModelObject<PK>, PK> implemen
     }
 
     @SuppressWarnings("unchecked")
-    public List<MODEL> getByPKs(List<PK> pks) {
+    public List<MODEL> getByPKs(List<Long> pks) {
         logger.info(getClazz().getSimpleName()+".findByPKs(), pks={}", pks);
         Query query = entityManager.createQuery(" select t from " + getClazz().getSimpleName() + " t where t.id in :1");
         query.setParameter("1", pks);

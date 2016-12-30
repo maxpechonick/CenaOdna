@@ -5,10 +5,10 @@ import java.io.Serializable;
 /**
  * Created by Admin on 13.12.2016.
  */
-public interface ModelObject<PK> extends Serializable{
+public interface ModelObject extends Serializable{
 
-    PK getId();
+    Long getId();
 
-    void setId(PK id);
+    void setId(Long id);
 
 }

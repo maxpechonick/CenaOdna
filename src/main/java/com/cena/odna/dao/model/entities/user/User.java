@@ -16,7 +16,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "USER", catalog = "test")
-public class User implements ModelObject<Long> {
+public class User implements ModelObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")

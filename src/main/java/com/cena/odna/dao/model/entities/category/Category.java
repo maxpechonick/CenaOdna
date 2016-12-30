@@ -21,7 +21,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "CATEGORY")
-public class Category implements ModelObject<Long> {
+public class Category implements ModelObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_seq")

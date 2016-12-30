@@ -25,7 +25,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "PRODUCT")
-public class Product implements ModelObject<Long> {
+public class Product implements ModelObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_seq")
