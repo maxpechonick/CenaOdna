@@ -17,7 +17,7 @@ public interface GenericDAO<MODEL extends ModelObject> extends Serializable{
 
     List<MODEL> getByPKs(List<Long> pks);
 
-    void remove(MODEL model) throws ManagerException;
+    void remove(Long id) throws ManagerException;
 
     void insert(MODEL model) throws ManagerException;
 

@@ -2,6 +2,7 @@ package com.cena.odna.core.service.product;
 
 import com.cena.odna.core.service.category.CategoryFacade;
 import com.cena.odna.core.service.core.GenericFacadeImpl;
+import com.cena.odna.core.service.user.UserFacade;
 import com.cena.odna.dao.exceptions.ManagerException;
 import com.cena.odna.dao.model.entities.product.Product;
 import com.cena.odna.dao.repository.product.ProductManager;
@@ -26,6 +27,9 @@ public class ProductFacadeImpl extends GenericFacadeImpl<ProductManager, Product
 
     @Autowired
     private CategoryFacade categoryFacade;
+
+    @Autowired
+    private UserFacade userFacade;
 
     private static final Logger logger = LoggerFactory.getLogger(ProductFacadeImpl.class);
 

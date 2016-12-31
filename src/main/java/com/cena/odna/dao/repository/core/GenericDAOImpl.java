@@ -48,12 +48,12 @@ public abstract class GenericDAOImpl<MODEL extends ModelObject> implements Gener
     }
 
     @Override
-    public void remove(MODEL model) throws ManagerException {
-        if (model == null) {
-            throw new ManagerException("model mustn't be equals null");
+    public void remove(Long id) throws ManagerException {
+        if (id == null || id == 0) {
+            throw new ManagerException("id mustn't be equals null");
         }
-        logger.info(getClazz().getSimpleName()+".remove() id={}", model.getId());
-        entityManager.remove(model);
+        logger.info(getClazz().getSimpleName()+".remove() id={}", id);
+        entityManager.remove(findByPK(id));
     }
 
     @Override

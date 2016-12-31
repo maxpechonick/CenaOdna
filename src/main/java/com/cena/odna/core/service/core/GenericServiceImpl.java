@@ -40,8 +40,8 @@ public abstract class GenericServiceImpl<F extends GenericFacade, DTO extends Ab
 
     @Override
     @SuppressWarnings("unchecked")
-    public void remove(DTO dto) throws ManagerException {
-        getFacade().remove(dto);
+    public void remove(Long id) throws ManagerException {
+        getFacade().remove(id);
     }
 
     @Override

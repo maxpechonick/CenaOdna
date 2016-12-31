@@ -37,8 +37,8 @@ public abstract class GenericFacadeImpl<DAO extends GenericDAO<MODEL>, DTO exten
     }
 
     @Override
-    public void remove(DTO dto) throws ManagerException {
-        getDAO().remove(convertToModel(dto));
+    public void remove(Long id) throws ManagerException {
+        getDAO().remove(id);
     }
 
     @Override
@@ -51,7 +51,7 @@ public abstract class GenericFacadeImpl<DAO extends GenericDAO<MODEL>, DTO exten
         getDAO().insert(convertToModel(dto));
     }
 
-    protected List<MODEL> convertToModelList(List<DTO> dtoList) {
+    public List<MODEL> convertToModelList(List<DTO> dtoList) {
         List<MODEL> result = new ArrayList<MODEL>();
         for (DTO dto : dtoList) {
             result.add(convertToModel(dto));
@@ -59,7 +59,7 @@ public abstract class GenericFacadeImpl<DAO extends GenericDAO<MODEL>, DTO exten
         return result;
     }
 
-    protected List<DTO> convertToDTOList(List<MODEL> modelList) {
+    public List<DTO> convertToDTOList(List<MODEL> modelList) {
         List<DTO> result = new ArrayList<DTO>();
         for (MODEL model : modelList) {
             result.add(convertToDTO(model));

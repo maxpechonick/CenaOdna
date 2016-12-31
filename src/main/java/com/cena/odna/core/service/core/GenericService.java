@@ -17,7 +17,7 @@ public interface GenericService<DTO extends AbstractDTO> extends Serializable{
     DTO findByPK(Long id) throws ManagerException;
     List<DTO> findAll();
     List<DTO> getByPKs(List<Long> pks);
-    void remove(DTO dto) throws ManagerException;
+    void remove(Long id) throws ManagerException;
     DTO update(DTO dto) throws ManagerException;
     void insert(DTO dto) throws ManagerException;
     Page<DTO> findAll(Pageable pageable);
