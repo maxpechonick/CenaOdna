@@ -22,6 +22,7 @@ public abstract class GenericDAOImpl<MODEL extends ModelObject> implements Gener
 
     protected abstract Class<MODEL> getClazz();
 
+    @Override
     public MODEL findByPK(Long id) throws ManagerException {
         if (id == null) {
             throw new ManagerException("id mustn't be equals null");
@@ -30,12 +31,14 @@ public abstract class GenericDAOImpl<MODEL extends ModelObject> implements Gener
         return entityManager.find(getClazz(),id);
     }
 
+    @Override
     @SuppressWarnings("unchecked")
     public List<MODEL> findAll() {
         logger.info(getClazz().getSimpleName()+".findAll()");
         return entityManager.createQuery("select t from " + getClazz().getSimpleName() + " t").getResultList();
     }
 
+    @Override
     @SuppressWarnings("unchecked")
     public List<MODEL> getByPKs(List<Long> pks) {
         logger.info(getClazz().getSimpleName()+".findByPKs(), pks={}", pks);
@@ -44,6 +47,7 @@ public abstract class GenericDAOImpl<MODEL extends ModelObject> implements Gener
         return query.getResultList();
     }
 
+    @Override
     public void remove(MODEL model) throws ManagerException {
         if (model == null) {
             throw new ManagerException("model mustn't be equals null");
@@ -52,6 +56,7 @@ public abstract class GenericDAOImpl<MODEL extends ModelObject> implements Gener
         entityManager.remove(model);
     }
 
+    @Override
     public void insert(MODEL model) throws ManagerException {
         logger.info(getClazz().getSimpleName()+".insert()");
         if (model == null) {
@@ -60,6 +65,7 @@ public abstract class GenericDAOImpl<MODEL extends ModelObject> implements Gener
         entityManager.persist(model);
     }
 
+    @Override
     public MODEL update(MODEL model) throws ManagerException {
         if (model == null) {
             throw new ManagerException("model mustn't be equals null");
@@ -68,4 +74,20 @@ public abstract class GenericDAOImpl<MODEL extends ModelObject> implements Gener
         return entityManager.merge(model);
     }
 
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<MODEL> find(int firstResult, int maxResult) {
+        logger.info(getClazz().getSimpleName()+".find({}, {})", firstResult, maxResult);
+        return entityManager.createQuery("select t from " +
+                getClazz().getSimpleName() + " t where LIMIT " +
+                maxResult + " OFFSET " + firstResult)
+                .getResultList();
+    }
+
+    @Override
+    public Long count() {
+        logger.info(getClazz().getSimpleName()+".count()");
+        Query query = entityManager.createQuery("select count(t.id) from " + getClazz().getSimpleName() + " t");
+        return (Long) query.getSingleResult();
+    }
 }

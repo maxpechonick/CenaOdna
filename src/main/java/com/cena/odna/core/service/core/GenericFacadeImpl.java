@@ -1,13 +1,15 @@
 package com.cena.odna.core.service.core;
 
+import com.cena.odna.core.service.core.page.Page;
+import com.cena.odna.core.service.core.page.PageImpl;
+import com.cena.odna.core.service.core.page.Pageable;
 import com.cena.odna.dao.exceptions.ManagerException;
 import com.cena.odna.dao.model.core.ModelObject;
 import com.cena.odna.dao.repository.core.GenericDAO;
 import com.cena.odna.dto.core.AbstractDTO;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -63,5 +65,22 @@ public abstract class GenericFacadeImpl<DAO extends GenericDAO<MODEL>, DTO exten
             result.add(convertToDTO(model));
         }
         return result;
+    }
+
+    @Override
+    public Page<DTO> findAll(Pageable pageable) {
+        if (pageable == null) {
+            return new PageImpl<DTO>(findAll());
+        }
+
+        return readPage(pageable);
+    }
+
+    private Page<DTO> readPage(Pageable pageable) {
+        long total = getDAO().count();
+        List<DTO> content = pageable.getOffset() > total ?
+                Collections.<DTO>emptyList() :
+                convertToDTOList(getDAO().find(pageable.getOffset(), pageable.getPageSize()));
+        return new PageImpl<DTO>(content, pageable, total);
     }
 }

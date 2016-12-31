@@ -4,7 +4,6 @@ import com.cena.odna.core.service.category.CategoryFacade;
 import com.cena.odna.core.service.core.GenericFacadeImpl;
 import com.cena.odna.dao.exceptions.ManagerException;
 import com.cena.odna.dao.model.entities.product.Product;
-import com.cena.odna.dao.repository.category.CategoryManager;
 import com.cena.odna.dao.repository.product.ProductManager;
 import com.cena.odna.dto.product.ProductDTO;
 import org.slf4j.Logger;
@@ -24,9 +23,6 @@ public class ProductFacadeImpl extends GenericFacadeImpl<ProductManager, Product
 
     @Autowired
     private ProductManager manager;
-
-    @Autowired
-    private CategoryManager categoryManager;
 
     @Autowired
     private CategoryFacade categoryFacade;
@@ -51,7 +47,7 @@ public class ProductFacadeImpl extends GenericFacadeImpl<ProductManager, Product
         result.setQuantity(dto.getQuantity());
         result.setWidth(dto.getWidth());
         try {
-            result.setCategory(categoryManager.findByPK(dto.getCategory().getId()));
+            result.setCategory(categoryFacade.convertToModel(categoryFacade.findByPK(dto.getCategory().getId())));
         } catch (ManagerException e) {
             logger.error("error in ProductFacadeImpl.convertToModel");
         }
