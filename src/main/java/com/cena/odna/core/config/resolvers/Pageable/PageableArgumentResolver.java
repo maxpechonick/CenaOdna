@@ -24,6 +24,10 @@ public class PageableArgumentResolver implements HandlerMethodArgumentResolver {
 
         HttpServletRequest request = webRequest.getNativeRequest(HttpServletRequest.class);
 
+        if (request.getParameter("size") == null || request.getParameter("page") == null) {
+            return null;
+        }
+
         return new PageRequest(Integer.parseInt(request.getParameter("size")),
                 Integer.parseInt(request.getParameter("page")));
     }
