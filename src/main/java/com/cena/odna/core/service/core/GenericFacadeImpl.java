@@ -69,7 +69,7 @@ public abstract class GenericFacadeImpl<DAO extends GenericDAO<MODEL>, DTO exten
 
     @Override
     public Page<DTO> findAll(Pageable pageable) {
-        if (pageable == null) {
+        if (pageable == null || pageable.toString().equals("{}")) {
             return new PageImpl<DTO>(findAll());
         }
 

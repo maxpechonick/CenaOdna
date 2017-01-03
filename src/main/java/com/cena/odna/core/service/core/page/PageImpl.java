@@ -13,6 +13,8 @@ import java.util.List;
  */
 public class PageImpl<T> implements Page<T>, Serializable{
 
+    private static final long serialVersionUID = 2907199729L;
+
     private final List<T> content = new ArrayList<T>();
     private final Pageable pageable;
     private final long total;

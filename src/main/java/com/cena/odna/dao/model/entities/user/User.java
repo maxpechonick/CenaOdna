@@ -15,7 +15,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "USER", catalog = "test")
+@Table(name = "ACCOUNT")
 public class User implements ModelObject {
 
     @Id

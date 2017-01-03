@@ -2,10 +2,12 @@ package com.cena.odna.core.service.core.page;
 
 import com.cena.odna.core.service.exceptions.ServiceException;
 
+import java.io.Serializable;
+
 /**
  * Created by Admin on 31.12.2016.
  */
-public class PageRequest implements Pageable {
+public class PageRequest implements Pageable, Serializable {
 
     private final int size;
     private final int page;

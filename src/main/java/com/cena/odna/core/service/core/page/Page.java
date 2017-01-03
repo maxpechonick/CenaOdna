@@ -1,6 +1,5 @@
 package com.cena.odna.core.service.core.page;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
