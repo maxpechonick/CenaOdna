@@ -1,12 +1,10 @@
-package com.cena.odna.core.service.user;
+package com.cena.odna.core.mvc.service.user;
 
-import com.cena.odna.core.service.core.GenericServiceImpl;
+import com.cena.odna.core.mvc.service.core.GenericServiceImpl;
 import com.cena.odna.dao.model.entities.user.User;
-import com.cena.odna.dao.repository.user.UserManager;
 import com.cena.odna.dto.user.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by Admin on 21.12.2016.

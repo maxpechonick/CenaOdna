@@ -1,8 +1,8 @@
-package com.cena.odna.core.service.product;
+package com.cena.odna.core.mvc.service.product;
 
-import com.cena.odna.core.service.category.CategoryFacade;
-import com.cena.odna.core.service.core.GenericFacadeImpl;
-import com.cena.odna.core.service.user.UserFacade;
+import com.cena.odna.core.mvc.service.category.CategoryFacade;
+import com.cena.odna.core.mvc.service.core.GenericFacadeImpl;
+import com.cena.odna.core.mvc.service.user.UserFacade;
 import com.cena.odna.dao.exceptions.ManagerException;
 import com.cena.odna.dao.model.entities.product.Product;
 import com.cena.odna.dao.repository.product.ProductManager;

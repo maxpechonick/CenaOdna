@@ -1,6 +1,6 @@
-package com.cena.odna.core.service.user;
+package com.cena.odna.core.mvc.service.user;
 
-import com.cena.odna.core.service.core.GenericFacadeImpl;
+import com.cena.odna.core.mvc.service.core.GenericFacadeImpl;
 import com.cena.odna.dao.exceptions.ManagerException;
 import com.cena.odna.dao.model.entities.user.Role;
 import com.cena.odna.dao.model.entities.user.User;
@@ -8,7 +8,6 @@ import com.cena.odna.dao.model.entities.user.UserRole;
 import com.cena.odna.dao.repository.user.UserManager;
 import com.cena.odna.dto.user.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

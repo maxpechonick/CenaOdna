@@ -1,6 +1,6 @@
-package com.cena.odna.core.service.core.page;
+package com.cena.odna.core.mvc.service.core.page;
 
-import com.cena.odna.core.service.exceptions.ServiceException;
+import com.cena.odna.core.mvc.service.exceptions.ServiceException;
 
 import java.io.Serializable;
 

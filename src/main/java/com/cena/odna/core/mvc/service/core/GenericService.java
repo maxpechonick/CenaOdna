@@ -1,9 +1,8 @@
-package com.cena.odna.core.service.core;
+package com.cena.odna.core.mvc.service.core;
 
-import com.cena.odna.core.service.core.page.Page;
-import com.cena.odna.core.service.core.page.Pageable;
+import com.cena.odna.core.mvc.service.core.page.Page;
+import com.cena.odna.core.mvc.service.core.page.Pageable;
 import com.cena.odna.dao.exceptions.ManagerException;
-import com.cena.odna.dao.model.core.ModelObject;
 import com.cena.odna.dto.core.AbstractDTO;
 
 import java.io.Serializable;

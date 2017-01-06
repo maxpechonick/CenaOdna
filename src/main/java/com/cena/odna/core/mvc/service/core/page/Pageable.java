@@ -1,4 +1,4 @@
-package com.cena.odna.core.service.core.page;
+package com.cena.odna.core.mvc.service.core.page;
 
 /**
  * Created by Admin on 31.12.2016.

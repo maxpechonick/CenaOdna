@@ -1,9 +1,8 @@
-package com.cena.odna.core.service.category;
+package com.cena.odna.core.mvc.service.category;
 
-import com.cena.odna.core.service.core.GenericFacadeImpl;
+import com.cena.odna.core.mvc.service.core.GenericFacadeImpl;
 import com.cena.odna.dao.model.entities.category.Category;
 import com.cena.odna.dao.repository.category.CategoryManager;
-import com.cena.odna.dao.repository.category.CategoryManagerImpl;
 import com.cena.odna.dto.category.CategoryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

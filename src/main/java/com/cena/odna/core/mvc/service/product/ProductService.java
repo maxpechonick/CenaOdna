@@ -1,8 +1,6 @@
-package com.cena.odna.core.service.product;
+package com.cena.odna.core.mvc.service.product;
 
-import com.cena.odna.core.service.core.GenericService;
-import com.cena.odna.dao.model.entities.product.Product;
-import com.cena.odna.dao.repository.product.ProductManager;
+import com.cena.odna.core.mvc.service.core.GenericService;
 import com.cena.odna.dto.product.ProductDTO;
 
 import java.util.List;

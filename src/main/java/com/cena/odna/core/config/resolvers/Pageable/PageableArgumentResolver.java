@@ -1,7 +1,7 @@
 package com.cena.odna.core.config.resolvers.Pageable;
 
-import com.cena.odna.core.service.core.page.PageRequest;
-import com.cena.odna.core.service.core.page.Pageable;
+import com.cena.odna.core.mvc.service.core.page.PageRequest;
+import com.cena.odna.core.mvc.service.core.page.Pageable;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;

@@ -1,6 +1,6 @@
-package com.cena.odna.core.service.user;
+package com.cena.odna.core.mvc.service.user;
 
-import com.cena.odna.core.service.core.GenericFacade;
+import com.cena.odna.core.mvc.service.core.GenericFacade;
 import com.cena.odna.dao.model.entities.user.User;
 import com.cena.odna.dto.user.UserDTO;
 

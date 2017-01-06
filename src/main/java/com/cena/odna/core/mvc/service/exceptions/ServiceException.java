@@ -1,4 +1,4 @@
-package com.cena.odna.core.service.exceptions;
+package com.cena.odna.core.mvc.service.exceptions;
 
 /**
  * Created by Admin on 21.12.2016.

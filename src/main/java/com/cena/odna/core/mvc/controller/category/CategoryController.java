@@ -1,8 +1,8 @@
-package com.cena.odna.core.mvc.category;
+package com.cena.odna.core.mvc.controller.category;
 
-import com.cena.odna.core.service.category.CategoryService;
-import com.cena.odna.core.service.core.page.Page;
-import com.cena.odna.core.service.core.page.Pageable;
+import com.cena.odna.core.mvc.service.category.CategoryService;
+import com.cena.odna.core.mvc.service.core.page.Page;
+import com.cena.odna.core.mvc.service.core.page.Pageable;
 import com.cena.odna.dao.exceptions.ManagerException;
 import com.cena.odna.dto.category.CategoryDTO;
 import org.slf4j.Logger;
@@ -32,7 +32,7 @@ public class CategoryController {
     private CategoryService service;
 
     @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Page<CategoryDTO>> findAllPersons(Pageable pageable) {
+    public ResponseEntity<Page<CategoryDTO>> findAll(Pageable pageable) {
         Page<CategoryDTO> result = service.findAll(pageable);
         return new ResponseEntity<Page<CategoryDTO>>(result, HttpStatus.OK);
     }
@@ -48,7 +48,7 @@ public class CategoryController {
         return new ResponseEntity<CategoryDTO>(result, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "" , method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public void create(@RequestBody CategoryDTO dto) {
         try {
             service.insert(dto);
@@ -57,21 +57,23 @@ public class CategoryController {
         }
     }
 
-    @RequestMapping(value = "" , method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public void update(@RequestBody CategoryDTO dto) {
+    @RequestMapping(value = "", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<CategoryDTO> update(@RequestBody CategoryDTO dto) {
+        CategoryDTO category = null;
         try {
-            service.update(dto);
+            category = service.update(dto);
         } catch (ManagerException e) {
             logger.error("error in CategoryController.update()");
         }
+        return new ResponseEntity<CategoryDTO>(category, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{id}" , method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public void delete(@PathVariable Long id) {
         try {
             service.remove(id);
         } catch (ManagerException e) {
-            logger.error("CategoryController.remove()");
+            logger.error("error in CategoryController.remove()");
         }
     }
 

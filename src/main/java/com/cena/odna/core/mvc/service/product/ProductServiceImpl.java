@@ -1,6 +1,6 @@
-package com.cena.odna.core.service.product;
+package com.cena.odna.core.mvc.service.product;
 
-import com.cena.odna.core.service.core.GenericServiceImpl;
+import com.cena.odna.core.mvc.service.core.GenericServiceImpl;
 import com.cena.odna.dto.product.ProductDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

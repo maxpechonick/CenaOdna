@@ -1,4 +1,4 @@
-package com.cena.odna.core.service.core.page;
+package com.cena.odna.core.mvc.service.core.page;
 
 import java.util.List;
 
