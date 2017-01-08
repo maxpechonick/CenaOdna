@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by Admin on 30.12.2016.
  */
-public interface GenericFacade<DTO extends AbstractDTO, MODEL extends ModelObject> extends Serializable {
+public interface GenericFacade<DTO extends AbstractDTO, MODEL extends ModelObject> extends SessionFacade {
 
     DTO findByPK(Long id) throws ManagerException;
     List<DTO> findAll();

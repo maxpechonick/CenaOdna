@@ -20,29 +20,29 @@ public abstract class GenericDAOImpl<MODEL extends ModelObject> implements Gener
     @PersistenceContext
     protected EntityManager entityManager;
 
-    protected abstract Class<MODEL> getClazz();
+    protected abstract Class<MODEL> getModelClass();
 
     @Override
     public MODEL findByPK(Long id) throws ManagerException {
         if (id == null) {
             throw new ManagerException("id mustn't be equals null");
         }
-        logger.info(getClazz().getSimpleName()+".findByPK({})", id);
-        return entityManager.find(getClazz(),id);
+        logger.info(getModelClass().getSimpleName()+".findByPK({})", id);
+        return entityManager.find(getModelClass(),id);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public List<MODEL> findAll() {
-        logger.info(getClazz().getSimpleName()+".findAll()");
-        return entityManager.createQuery("select t from " + getClazz().getSimpleName() + " t").getResultList();
+        logger.info(getModelClass().getSimpleName()+".findAll()");
+        return entityManager.createQuery("select t from " + getModelClass().getSimpleName() + " t").getResultList();
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public List<MODEL> getByPKs(List<Long> pks) {
-        logger.info(getClazz().getSimpleName()+".findByPKs(), pks={}", pks);
-        Query query = entityManager.createQuery(" select t from " + getClazz().getSimpleName() + " t where t.id in :1");
+        logger.info(getModelClass().getSimpleName()+".findByPKs(), pks={}", pks);
+        Query query = entityManager.createQuery(" select t from " + getModelClass().getSimpleName() + " t where t.id in :1");
         query.setParameter("1", pks);
         return query.getResultList();
     }
@@ -52,13 +52,13 @@ public abstract class GenericDAOImpl<MODEL extends ModelObject> implements Gener
         if (id == null || id == 0) {
             throw new ManagerException("id mustn't be equals null");
         }
-        logger.info(getClazz().getSimpleName()+".remove() id={}", id);
+        logger.info(getModelClass().getSimpleName()+".remove() id={}", id);
         entityManager.remove(findByPK(id));
     }
 
     @Override
     public void insert(MODEL model) throws ManagerException {
-        logger.info(getClazz().getSimpleName()+".insert()");
+        logger.info(getModelClass().getSimpleName()+".insert()");
         if (model == null) {
             throw new ManagerException("model mustn't be equals null");
         }
@@ -70,24 +70,24 @@ public abstract class GenericDAOImpl<MODEL extends ModelObject> implements Gener
         if (model == null) {
             throw new ManagerException("model mustn't be equals null");
         }
-        logger.info(getClazz().getSimpleName()+".update() id={}", model.getId());
+        logger.info(getModelClass().getSimpleName()+".update() id={}", model.getId());
         return entityManager.merge(model);
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public List<MODEL> find(int firstResult, int maxResult) {
-        logger.info(getClazz().getSimpleName()+".find({}, {})", firstResult, maxResult);
+        logger.info(getModelClass().getSimpleName()+".find({}, {})", firstResult, maxResult);
         return entityManager.createQuery("select t from " +
-                getClazz().getSimpleName() + " t where LIMIT " +
+                getModelClass().getSimpleName() + " t where LIMIT " +
                 maxResult + " OFFSET " + firstResult)
                 .getResultList();
     }
 
     @Override
     public Long count() {
-        logger.info(getClazz().getSimpleName()+".count()");
-        Query query = entityManager.createQuery("select count(t.id) from " + getClazz().getSimpleName() + " t");
+        logger.info(getModelClass().getSimpleName()+".count()");
+        Query query = entityManager.createQuery("select count(t.id) from " + getModelClass().getSimpleName() + " t");
         return (Long) query.getSingleResult();
     }
 }

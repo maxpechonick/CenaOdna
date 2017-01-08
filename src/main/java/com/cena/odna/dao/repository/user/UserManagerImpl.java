@@ -20,7 +20,7 @@ public class UserManagerImpl extends GenericDAOImpl<User> implements UserManager
         return query.singleResult(user);
     }
 
-    protected Class<User> getClazz() {
+    protected Class<User> getModelClass() {
         return User.class;
     }
 }

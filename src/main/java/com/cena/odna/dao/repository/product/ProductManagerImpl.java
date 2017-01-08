@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 public class ProductManagerImpl extends GenericDAOImpl<Product> implements ProductManager{
 
-    protected Class<Product> getClazz() {
+    protected Class<Product> getModelClass() {
         return Product.class;
     }
 

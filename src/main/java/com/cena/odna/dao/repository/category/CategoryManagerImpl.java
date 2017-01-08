@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class CategoryManagerImpl extends GenericDAOImpl<Category> implements CategoryManager {
-    protected Class<Category> getClazz() {
+    protected Class<Category> getModelClass() {
         return Category.class;
     }
 }
