@@ -1,7 +1,7 @@
 import {Category} from "./category";
-export class Product {
+import {AbstractEntity} from "./abstractentity";
+export class Product extends AbstractEntity{
   name: string;
-  id: number;
   description: string;
   length: number;
   height: number;
