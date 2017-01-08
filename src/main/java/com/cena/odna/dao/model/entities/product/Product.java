@@ -55,13 +55,6 @@ public class Product implements ModelObject {
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Category category;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
-    @JoinTable(name = "FAVORITES", joinColumns = {
-            @JoinColumn(name = "PRODUCT_ID")},
-            inverseJoinColumns = {@JoinColumn(name = "USER_ID")
-            })
-    private Set<User> users = new HashSet<User>(0);
-
     public Category getCategory() {
         return category;
     }
@@ -84,14 +77,6 @@ public class Product implements ModelObject {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
     }
 
     public int getLength() {
