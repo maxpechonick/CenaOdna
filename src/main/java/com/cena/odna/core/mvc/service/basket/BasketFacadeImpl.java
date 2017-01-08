@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * Created by Admin on 08.01.2017.
@@ -45,5 +46,10 @@ public class BasketFacadeImpl extends GenericFacadeImpl<BasketManager, BasketDTO
         result.setProduct(productFacade.convertToDTO(basket.getProduct()));
         result.setQuantity(basket.getQuantity());
         return result;
+    }
+
+    @Override
+    public List<BasketDTO> findAllByUser(Long userId) {
+        return convertToDTOList(getDAO().getAllByUser(userId));
     }
 }
