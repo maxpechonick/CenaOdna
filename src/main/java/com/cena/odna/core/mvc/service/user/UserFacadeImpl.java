@@ -2,9 +2,7 @@ package com.cena.odna.core.mvc.service.user;
 
 import com.cena.odna.core.mvc.service.core.GenericFacadeImpl;
 import com.cena.odna.dao.exceptions.ManagerException;
-import com.cena.odna.dao.model.entities.user.Role;
 import com.cena.odna.dao.model.entities.user.User;
-import com.cena.odna.dao.model.entities.user.UserRole;
 import com.cena.odna.dao.repository.user.UserManager;
 import com.cena.odna.dto.user.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +10,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 
 /**
  * Created by Admin on 30.12.2016.
@@ -20,7 +17,7 @@ import java.util.ArrayList;
 @Service
 @Transactional
 public class UserFacadeImpl extends GenericFacadeImpl<UserManager, UserDTO, User>
-        implements UserFacade{
+        implements UserFacade {
 
     @Autowired
     private UserManager manager;
@@ -42,7 +39,8 @@ public class UserFacadeImpl extends GenericFacadeImpl<UserManager, UserDTO, User
         result.setId(dto.getId());
         result.setEnabled(dto.isEnabled());
         result.setUsername(dto.getUsername());
-        //todo password and roles
+        result.setRole(dto.getRole());
+        result.setPassword(dto.getPassword());
         return result;
     }
 
@@ -55,10 +53,7 @@ public class UserFacadeImpl extends GenericFacadeImpl<UserManager, UserDTO, User
         result.setId(user.getId());
         result.setEnabled(user.isEnabled());
         result.setUsername(user.getUsername());
-        result.setRoles(new ArrayList<Role>());
-        for (UserRole role : user.getUserRole()) {
-            result.getRoles().add(role.getRole());
-        }
+        result.setRole(user.getRole());
         return result;
     }
 
@@ -67,6 +62,16 @@ public class UserFacadeImpl extends GenericFacadeImpl<UserManager, UserDTO, User
         User user = convertToModel(dto);
         user.setPassword(encoder.encode(user.getPassword()));
         getDAO().insert(user);
+    }
+
+    @Override
+    public UserDTO update(UserDTO dto) throws ManagerException {
+        User user = convertToModel(dto);
+        if (user.getPassword() == null) {
+            User currentUser = getDAO().findByPK(user.getId());
+            user.setPassword(currentUser.getPassword());
+        }
+        return convertToDTO(manager.update(user));
     }
 
     @Override

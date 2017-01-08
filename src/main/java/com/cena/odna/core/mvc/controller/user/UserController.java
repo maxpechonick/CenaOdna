@@ -50,7 +50,6 @@ public class UserController {
 
     @RequestMapping(value = "", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public void create(@RequestBody UserDTO dto) {
-        //todo password
         try {
             service.insert(dto);
         } catch (ManagerException e) {
@@ -60,12 +59,13 @@ public class UserController {
 
     @RequestMapping(value = "", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserDTO> update(@RequestBody UserDTO dto) {
+        UserDTO user = null;
         try {
-            UserDTO user = service.update(dto);
+            user = service.update(dto);
         } catch (ManagerException e) {
             logger.error("error in UserService.update()");
         }
-        return new ResponseEntity<UserDTO>(dto, HttpStatus.OK);
+        return new ResponseEntity<UserDTO>(user, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)

@@ -20,11 +20,10 @@ public class AccountUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        //todo!!!
         GrantedAuthority authority = new GrantedAuthority() {
             @Override
             public String getAuthority() {
-                return "USER";
+                return user.getRole().name();
             }
         };
 

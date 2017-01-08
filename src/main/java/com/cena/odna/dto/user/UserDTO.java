@@ -12,7 +12,8 @@ public class UserDTO extends AbstractDTO {
 
     private String username;
     private Boolean enabled;
-    private List<Role> roles;
+    private Role role;
+    private String password;
 
     public String getUsername() {
         return username;
@@ -30,11 +31,19 @@ public class UserDTO extends AbstractDTO {
         this.enabled = enabled;
     }
 
-    public List<Role> getRoles() {
-        return roles;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

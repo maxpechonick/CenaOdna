@@ -1,7 +1,10 @@
 package com.cena.odna.dao.repository.user;
 
+import com.cena.odna.dao.model.entities.user.QUser;
 import com.cena.odna.dao.repository.core.GenericDAOImpl;
 import com.cena.odna.dao.model.entities.user.User;
+import com.mysema.query.jpa.impl.JPAQuery;
+import com.mysema.query.jpa.sql.JPASQLQuery;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -11,7 +14,10 @@ import org.springframework.stereotype.Repository;
 public class UserManagerImpl extends GenericDAOImpl<User> implements UserManager {
 
     public User findByUserName(String username) {
-        return null;
+        QUser user = QUser.user;
+        JPAQuery query = new JPAQuery(entityManager);
+        query.from(user).where(user.username.eq(username));
+        return query.singleResult(user);
     }
 
     protected Class<User> getClazz() {

@@ -33,11 +33,11 @@ public class User implements ModelObject {
     @Column(name = "PASSWORD", nullable = false, length = 60)
     private String password;
 
-    @Column(name = "enabled", nullable = false)
+    @Column(name = "ENABLED", nullable = false)
     private boolean enabled;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    private Set<UserRole> userRole = new HashSet<UserRole>(0);
+    @Column(name = "USER_ROLE", nullable = false)
+    private Role role;
 
     public String getUsername() {
         return this.username;
@@ -64,12 +64,12 @@ public class User implements ModelObject {
     }
 
 
-    public Set<UserRole> getUserRole() {
-        return this.userRole;
+    public Role getRole() {
+        return role;
     }
 
-    public void setUserRole(Set<UserRole> userRole) {
-        this.userRole = userRole;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public Long getId() {
