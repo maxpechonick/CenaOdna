@@ -39,6 +39,28 @@ public class User implements ModelObject {
     @Column(name = "USER_ROLE", nullable = false)
     private Role role;
 
+    @Column(name = "FIRST_NAME", nullable = false)
+    private String firstName;
+
+    @Column(name = "LAST_NAME", nullable = false)
+    private String lastName;
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public String getUsername() {
         return this.username;
     }

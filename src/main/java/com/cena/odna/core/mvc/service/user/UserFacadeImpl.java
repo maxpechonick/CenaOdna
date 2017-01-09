@@ -41,6 +41,8 @@ public class UserFacadeImpl extends GenericFacadeImpl<UserManager, UserDTO, User
         result.setUsername(dto.getUsername());
         result.setRole(dto.getRole());
         result.setPassword(dto.getPassword());
+        result.setFirstName(dto.getFirstName());
+        result.setLastName(dto.getLastName());
         return result;
     }
 
@@ -54,6 +56,8 @@ public class UserFacadeImpl extends GenericFacadeImpl<UserManager, UserDTO, User
         result.setEnabled(user.isEnabled());
         result.setUsername(user.getUsername());
         result.setRole(user.getRole());
+        result.setFirstName(user.getFirstName());
+        result.setLastName(user.getLastName());
         return result;
     }
 
