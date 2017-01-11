@@ -1,0 +1,13 @@
+<div class="jumbotron">
+  <div class="container">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div>
+        <ul class="tabs" materialize="tabs" ng-reflect-materialize="tabs">
+          <li class="tab col s3"><a [routerLink]="['register']">Registration</a></li>
+          <li class="tab col s3"><a class="tab col s3" [routerLink]="['login']">Login</a></li>
+        </ul>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
