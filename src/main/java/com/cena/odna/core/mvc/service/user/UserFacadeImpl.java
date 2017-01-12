@@ -9,6 +9,7 @@ import com.cena.odna.dto.user.UserDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,7 @@ public class UserFacadeImpl extends GenericFacadeImpl<UserManager, UserDTO, User
     private UserManager manager;
 
     @Autowired
-    private PasswordEncoder encoder;
+    private BCryptPasswordEncoder encoder;
 
     @Override
     protected UserManager getDAO() {

@@ -9,6 +9,10 @@ public enum Role {
     ADMIN,
     CEO,
     USER,
-    ANONYMOUS
+    ANONYMOUS;
+
+    public String authority() {
+        return "ROLE_" + this.name();
+    }
 
 }

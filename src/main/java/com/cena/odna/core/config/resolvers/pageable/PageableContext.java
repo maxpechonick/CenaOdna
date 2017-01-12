@@ -1,4 +1,4 @@
-package com.cena.odna.core.config.resolvers.Pageable;
+package com.cena.odna.core.config.resolvers.pageable;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;

@@ -1,4 +1,4 @@
-package com.cena.odna.core.config.resolvers.Pageable;
+package com.cena.odna.core.config.resolvers.pageable;
 
 import com.cena.odna.core.mvc.service.core.page.PageRequest;
 import com.cena.odna.core.mvc.service.core.page.Pageable;
