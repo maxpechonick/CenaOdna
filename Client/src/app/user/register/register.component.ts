@@ -1,7 +1,6 @@
 import {Component} from "@angular/core";
 import {User} from "../../entites/user";
 import {Router} from "@angular/router";
-import {AlertService} from "../../services/alert.service";
 import {UserService} from "../../services/user.service";
 
 @Component({
@@ -10,12 +9,11 @@ import {UserService} from "../../services/user.service";
   styleUrls: [ './register.component.css' ]
 })
 export class RegisterComponent {
-  user: User;
+  user: User = new User;
   loading = false;
   constructor(
     private userService: UserService,
-    private router: Router,
-    private alertService: AlertService
+    private router: Router
   ) {}
 
   register(): void {
@@ -23,12 +21,11 @@ export class RegisterComponent {
     this.userService.create(this.user)
       .subscribe(
         data => {
-          this.alertService.success('Registration successful', true);
           this.router.navigate(['/login']);
         },
         error => {
-          this.alertService.error(error);
           this.loading = false;
+          alert(error._body);
         });
   }
 }

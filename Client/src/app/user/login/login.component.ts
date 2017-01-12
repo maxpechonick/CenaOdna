@@ -6,8 +6,8 @@ import {User} from "../../entites/user";
   styleUrls: [ './login.component.css' ]
 })
 export class LoginComponent {
-  user: User;
+  user: User = new User;
   login() {
-    alert("login");
+    alert(this.user.username);
   }
 }
