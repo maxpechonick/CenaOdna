@@ -9,6 +9,7 @@ import {HttpModule} from "@angular/http";
 import {LoginComponent} from "./user/login/login.component";
 import {HomeComponent} from "./home/home.component";
 import { MaterializeModule } from 'angular2-materialize';
+import {NgSpinningPreloader} from "ng2-spinning-preloader";
 
 @NgModule({
   imports:      [
@@ -25,7 +26,8 @@ import { MaterializeModule } from 'angular2-materialize';
     HomeComponent
   ],
   providers: [
-    UserService
+    UserService,
+    NgSpinningPreloader
   ],
   bootstrap:    [
     AppComponent

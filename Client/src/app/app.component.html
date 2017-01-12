@@ -1,13 +1,23 @@
 <div class="jumbotron">
   <div class="container">
-    <div class="col-sm-8 col-sm-offset-2">
-      <div>
-        <ul class="tabs" materialize="tabs" ng-reflect-materialize="tabs">
-          <li class="tab col s3"><a [routerLink]="['register']">Registration</a></li>
-          <li class="tab col s3"><a class="tab col s3" [routerLink]="['login']">Login</a></li>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo"><i class="material-icons">shop</i>CenaOdna</a>
+        <ul class="right hide-on-med-and-down">
+          <li>
+            <form>
+              <div class="input-field">
+                <input id="search" type="search" required>
+                <label for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+              </div>
+            </form>
+          </li>
+          <li><a [routerLink]="['register']">Registration</a></li>
+          <li><a [routerLink]="['login']">Login</a></li>
         </ul>
       </div>
-      <router-outlet></router-outlet>
-    </div>
+    </nav>
+    <router-outlet></router-outlet>
   </div>
 </div>
