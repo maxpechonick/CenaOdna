@@ -2,8 +2,10 @@ package com.cena.odna.core.mvc.controller.user;
 
 import com.cena.odna.core.mvc.service.core.page.Page;
 import com.cena.odna.core.mvc.service.core.page.Pageable;
+import com.cena.odna.core.mvc.service.exceptions.ServiceException;
 import com.cena.odna.core.mvc.service.user.UserService;
 import com.cena.odna.dao.exceptions.ManagerException;
+import com.cena.odna.dao.model.entities.user.Role;
 import com.cena.odna.dto.user.UserDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,12 +51,15 @@ public class UserController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public void create(@RequestBody UserDTO dto) {
+    public ResponseEntity<String> create(@RequestBody UserDTO dto) {
+        dto.setRole(Role.USER);
+        dto.setEnabled(true);
         try {
             service.insert(dto);
-        } catch (ManagerException e) {
-            logger.error("error in UserController.create()");
+        } catch (ServiceException e) {
+            return new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
         }
+        return new ResponseEntity<String>("OK", HttpStatus.OK);
     }
 
     @RequestMapping(value = "", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)

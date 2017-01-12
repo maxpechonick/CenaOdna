@@ -2,6 +2,7 @@ package com.cena.odna.core.mvc.service.core;
 
 import com.cena.odna.core.mvc.service.core.page.Page;
 import com.cena.odna.core.mvc.service.core.page.Pageable;
+import com.cena.odna.core.mvc.service.exceptions.ServiceException;
 import com.cena.odna.dao.exceptions.ManagerException;
 import com.cena.odna.dao.model.core.ModelObject;
 import com.cena.odna.dto.core.AbstractDTO;
@@ -19,7 +20,7 @@ public interface GenericFacade<DTO extends AbstractDTO, MODEL extends ModelObjec
     List<DTO> getByPKs(List<Long> pks);
     void remove(Long id) throws ManagerException;
     DTO update(DTO dto) throws ManagerException;
-    void insert(DTO dto) throws ManagerException;
+    void insert(DTO dto) throws ServiceException;
     Page<DTO> findAll(Pageable pageable);
     MODEL convertToModel(DTO dto);
     DTO convertToDTO(MODEL model);

@@ -3,6 +3,7 @@ package com.cena.odna.core.mvc.controller.category;
 import com.cena.odna.core.mvc.service.category.CategoryService;
 import com.cena.odna.core.mvc.service.core.page.Page;
 import com.cena.odna.core.mvc.service.core.page.Pageable;
+import com.cena.odna.core.mvc.service.exceptions.ServiceException;
 import com.cena.odna.dao.exceptions.ManagerException;
 import com.cena.odna.dto.category.CategoryDTO;
 import org.slf4j.Logger;
@@ -52,7 +53,7 @@ public class CategoryController {
     public void create(@RequestBody CategoryDTO dto) {
         try {
             service.insert(dto);
-        } catch (ManagerException e) {
+        } catch (ServiceException e) {
             logger.error("error in CategoryController.create");
         }
     }

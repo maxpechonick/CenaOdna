@@ -3,10 +3,13 @@ package com.cena.odna.core.mvc.service.core;
 import com.cena.odna.core.mvc.service.core.page.Page;
 import com.cena.odna.core.mvc.service.core.page.PageImpl;
 import com.cena.odna.core.mvc.service.core.page.Pageable;
+import com.cena.odna.core.mvc.service.exceptions.ServiceException;
 import com.cena.odna.dao.exceptions.ManagerException;
 import com.cena.odna.dao.model.core.ModelObject;
 import com.cena.odna.dao.repository.core.GenericDAO;
 import com.cena.odna.dto.core.AbstractDTO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,6 +20,8 @@ import java.util.List;
  */
 public abstract class GenericFacadeImpl<DAO extends GenericDAO<MODEL>, DTO extends AbstractDTO, MODEL extends ModelObject>
         implements GenericFacade<DTO, MODEL> {
+
+    private static final Logger logger = LoggerFactory.getLogger(GenericFacadeImpl.class);
 
     protected abstract DAO getDAO();
 
@@ -47,8 +52,12 @@ public abstract class GenericFacadeImpl<DAO extends GenericDAO<MODEL>, DTO exten
     }
 
     @Override
-    public void insert(DTO dto) throws ManagerException {
-        getDAO().insert(convertToModel(dto));
+    public void insert(DTO dto) throws ServiceException {
+        try {
+            getDAO().insert(convertToModel(dto));
+        } catch (ManagerException e) {
+            logger.error("error in " + getDAO().getClass().getSimpleName() + ".insert", e);
+        }
     }
 
     public List<MODEL> convertToModelList(List<DTO> dtoList) {

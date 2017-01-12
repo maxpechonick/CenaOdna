@@ -1,10 +1,13 @@
 package com.cena.odna.core.mvc.service.user;
 
 import com.cena.odna.core.mvc.service.core.GenericFacadeImpl;
+import com.cena.odna.core.mvc.service.exceptions.ServiceException;
 import com.cena.odna.dao.exceptions.ManagerException;
 import com.cena.odna.dao.model.entities.user.User;
 import com.cena.odna.dao.repository.user.UserManager;
 import com.cena.odna.dto.user.UserDTO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -18,6 +21,8 @@ import javax.transaction.Transactional;
 @Transactional
 public class UserFacadeImpl extends GenericFacadeImpl<UserManager, UserDTO, User>
         implements UserFacade {
+
+    private static final Logger logger = LoggerFactory.getLogger(UserFacadeImpl.class);
 
     @Autowired
     private UserManager manager;
@@ -62,10 +67,18 @@ public class UserFacadeImpl extends GenericFacadeImpl<UserManager, UserDTO, User
     }
 
     @Override
-    public void insert(UserDTO dto) throws ManagerException {
+    public void insert(UserDTO dto) throws ServiceException {
         User user = convertToModel(dto);
+        User userByName = findByUserName(user.getUsername());
+        if (userByName != null) {
+            throw new ServiceException("user with name '" + user.getUsername() + "' already exist");
+        }
         user.setPassword(encoder.encode(user.getPassword()));
-        getDAO().insert(user);
+        try {
+            getDAO().insert(user);
+        } catch (ManagerException e) {
+            logger.error("error in UserManager.insert", e);
+        }
     }
 
     @Override
