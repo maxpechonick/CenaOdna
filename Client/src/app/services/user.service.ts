@@ -3,6 +3,8 @@ import {Http, Response, Headers, RequestOptions} from "@angular/http";
 import {User} from "../entites/user";
 
 import 'rxjs/add/operator/map';
+
+
 const webServiceEndpoint: string = 'http://localhost:8080/api';
 
 @Injectable()
@@ -35,7 +37,7 @@ export class UserService {
     // create authorization header with jwt token
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser && currentUser.token) {
-      let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+      let headers = new Headers({ 'X-Authorization': 'Bearer ' + currentUser.token });
       return new RequestOptions({ headers: headers });
     }
   }

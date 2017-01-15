@@ -21,6 +21,9 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <querydsl-jpa.version>3.6.3</querydsl-jpa.version>
+        <jjwt.version>0.6.0</jjwt.version>
+        <commons-lang3.version>3.0</commons-lang3.version>
     </properties>
 
     <dependencies>
@@ -60,17 +63,17 @@
         <dependency>
             <groupId>com.mysema.querydsl</groupId>
             <artifactId>querydsl-core</artifactId>
-            <version>3.6.3</version>
+            <version>${querydsl-jpa.version}</version>
         </dependency>
         <dependency>
             <groupId>com.mysema.querydsl</groupId>
             <artifactId>querydsl-apt</artifactId>
-            <version>3.6.3</version>
+            <version>${querydsl-jpa.version}</version>
         </dependency>
         <dependency>
             <groupId>com.mysema.querydsl</groupId>
             <artifactId>querydsl-jpa</artifactId>
-            <version>3.6.3</version>
+            <version>${querydsl-jpa.version}</version>
         </dependency>
 
         <!--spring boot dependencies-->
@@ -85,7 +88,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>1.4.2.RELEASE</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -102,13 +104,13 @@
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
-            <version>0.6.0</version>
+            <version>${jjwt.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.0</version>
+            <version>${commons-lang3.version}</version>
         </dependency>
 
         <dependency>

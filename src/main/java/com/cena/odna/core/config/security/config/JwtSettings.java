@@ -1,5 +1,6 @@
 package com.cena.odna.core.config.security.config;
 
+import com.cena.odna.core.config.security.model.token.JwtToken;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
@@ -7,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * Created by Admin on 12.01.2017.
  */
 @Configuration
-@ConfigurationProperties(prefix = "demo.security.jwt")
+@ConfigurationProperties(prefix = "security.jwt")
 public class JwtSettings {
     /**
      * {@link JwtToken} will expire after this time.

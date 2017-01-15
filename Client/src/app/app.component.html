@@ -13,8 +13,9 @@
               </div>
             </form>
           </li>
-          <li><a [routerLink]="['register']">Registration</a></li>
-          <li><a [routerLink]="['login']">Login</a></li>
+          <li [hidden]="!isLoggedIn"><a [routerLink]="['home']" (click)="logout()">Logout</a></li>
+          <li [hidden]="isLoggedIn"><a [routerLink]="['register']">Registration</a></li>
+          <li [hidden]="isLoggedIn"><a [routerLink]="['login']">Login</a></li>
         </ul>
       </div>
     </nav>

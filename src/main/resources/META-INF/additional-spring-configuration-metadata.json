@@ -1,0 +1,24 @@
+{
+  "properties": [
+    {
+      "name": "security.jwt.tokenSigningKey",
+      "type": "java.lang.String",
+      "description": "Description for security.jwt.tokenSigningKey."
+    },
+    {
+      "name": "security.jwt.tokenIssuer",
+      "type": "java.lang.String",
+      "description": "Description for security.jwt.tokenIssuer."
+    },
+    {
+      "name": "security.jwt.refreshTokenExpTime",
+      "type": "java.lang.Integer",
+      "description": "Description for security.jwt.refreshTokenExpTime."
+    },
+    {
+      "name": "security.jwt.tokenExpirationTime",
+      "type": "java.lang.Integer",
+      "description": "Description for security.jwt.tokenExpirationTime."
+    }
+  ]
+}

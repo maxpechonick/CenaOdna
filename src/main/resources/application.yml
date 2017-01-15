@@ -1,0 +1,5 @@
+security.jwt:
+  tokenExpirationTime: 15 # Number of minutes
+  refreshTokenExpTime: 60 # Minutes
+  tokenIssuer: http://localhost:8080
+  tokenSigningKey: xm8EV6Hy5RMFK4EEACIDAwQus
