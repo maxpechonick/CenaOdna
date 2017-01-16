@@ -11,8 +11,25 @@ public enum Role {
     USER,
     ANONYMOUS;
 
+    private static final String PREFIX = "ROLE_";
+
     public String authority() {
-        return "ROLE_" + this.name();
+        return PREFIX + this.name();
+    }
+
+    public static Role parseAuthority(String authority) {
+        if (authority == null ||
+                authority.length() <= PREFIX.length() ||
+                !authority.contains(PREFIX)) {
+            return null;
+        }
+        authority = authority.substring(PREFIX.length());
+        for (Role role : values()) {
+            if (role.name().equals(authority)) {
+                return role;
+            }
+        }
+        return null;
     }
 
 }

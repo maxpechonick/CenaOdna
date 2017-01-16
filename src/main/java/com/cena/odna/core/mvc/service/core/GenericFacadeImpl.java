@@ -19,6 +19,7 @@ import java.util.List;
  * Created by Admin on 30.12.2016.
  */
 public abstract class GenericFacadeImpl<DAO extends GenericDAO<MODEL>, DTO extends AbstractDTO, MODEL extends ModelObject>
+        extends SessionFacadeImpl
         implements GenericFacade<DTO, MODEL> {
 
     private static final Logger logger = LoggerFactory.getLogger(GenericFacadeImpl.class);
@@ -43,16 +44,19 @@ public abstract class GenericFacadeImpl<DAO extends GenericDAO<MODEL>, DTO exten
 
     @Override
     public void remove(Long id) throws ManagerException {
+        if (!isAdmin()) return;
         getDAO().remove(id);
     }
 
     @Override
     public DTO update(DTO dto) throws ManagerException {
+        if (!isAdmin()) return null;
         return convertToDTO(getDAO().update(convertToModel(dto)));
     }
 
     @Override
     public void insert(DTO dto) throws ServiceException {
+        if (!isAdmin()) return;
         try {
             getDAO().insert(convertToModel(dto));
         } catch (ManagerException e) {
