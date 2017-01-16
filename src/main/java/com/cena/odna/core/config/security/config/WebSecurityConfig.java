@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -34,7 +35,7 @@ import java.util.List;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public static final String JWT_TOKEN_HEADER_PARAM = "X-Authorization";
     public static final String FORM_BASED_LOGIN_ENTRY_POINT = "/api/auth/login";
-    public static final String TOKEN_BASED_AUTH_ENTRY_POINT = "/api/**";
+    public static final String TOKEN_BASED_AUTH_ENTRY_POINT = "/api/protected/**";
     public static final String TOKEN_REFRESH_ENTRY_POINT = "/api/auth/token";
 
     @Autowired

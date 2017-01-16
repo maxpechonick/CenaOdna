@@ -1,5 +1,6 @@
 package com.cena.odna.core.config.security.auth.jwt;
 
+import com.cena.odna.core.config.security.config.WebSecurityConfig;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.OrRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;

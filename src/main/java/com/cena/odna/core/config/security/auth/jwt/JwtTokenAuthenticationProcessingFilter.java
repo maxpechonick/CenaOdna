@@ -5,6 +5,8 @@ import com.cena.odna.core.config.security.auth.jwt.extractor.TokenExtractor;
 import com.cena.odna.core.config.security.config.WebSecurityConfig;
 import com.cena.odna.core.config.security.model.token.RawAccessJwtToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContext;
@@ -26,6 +28,7 @@ import java.io.IOException;
  *
  * Aug 5, 2016
  */
+@Order(Ordered.LOWEST_PRECEDENCE)
 public class JwtTokenAuthenticationProcessingFilter extends AbstractAuthenticationProcessingFilter {
     private final AuthenticationFailureHandler failureHandler;
     private final TokenExtractor tokenExtractor;
