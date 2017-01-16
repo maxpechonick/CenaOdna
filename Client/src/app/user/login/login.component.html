@@ -10,7 +10,7 @@
         <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
       </div>
       <div class="input-field col s12" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-        <input id="password" type="password" class="validate" name="password" [(ngModel)]="user.password"
+        <input id="password" type="password" minlength="6" class="validate" name="password" [(ngModel)]="user.password"
                #password="ngModel" required/>
         <label for="password">Password</label>
         <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>

@@ -11,6 +11,7 @@ import {HomeComponent} from "./home/home.component";
 import { MaterializeModule } from 'angular2-materialize';
 import {NgSpinningPreloader} from "ng2-spinning-preloader";
 import {AuthService} from "./services/auth.service";
+import {CategoryService} from "./services/category.service";
 
 @NgModule({
   imports:      [
@@ -29,7 +30,8 @@ import {AuthService} from "./services/auth.service";
   providers: [
     UserService,
     NgSpinningPreloader,
-    AuthService
+    AuthService,
+    CategoryService
   ],
   bootstrap:    [
     AppComponent

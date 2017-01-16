@@ -42,13 +42,12 @@ public class AjaxAwareAuthenticationSuccessHandler implements AuthenticationSucc
         JwtToken accessToken = tokenFactory.createAccessJwtToken(userContext);
         JwtToken refreshToken = tokenFactory.createRefreshToken(userContext);
 
-        Map<String, String> tokenMap = new HashMap<String, String>();
+        Map<String, String> tokenMap = new HashMap<>();
         tokenMap.put("token", accessToken.getToken());
         tokenMap.put("refreshToken", refreshToken.getToken());
 
         response.setStatus(HttpStatus.OK.value());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-        response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
         mapper.writeValue(response.getWriter(), tokenMap);
 
         clearAuthenticationAttributes(request);

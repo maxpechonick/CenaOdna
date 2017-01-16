@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgSpinningPreloader} from "ng2-spinning-preloader";
 import {AuthService} from "./services/auth.service";
+import {CategoryService} from "./services/category.service";
 
 @Component({
   selector: 'my-app',
