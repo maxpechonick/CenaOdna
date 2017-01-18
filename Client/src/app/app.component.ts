@@ -22,5 +22,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.ngSpinningPreloader.stop();
     this.authService.getState().subscribe(item => this.isLoggedIn = item);
+    if (AuthService.loggedIn()) {
+      this.authService.startupTokenRefresh();
+    }
   }
 }

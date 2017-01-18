@@ -3,22 +3,22 @@
     {
       "name": "security.jwt.tokenSigningKey",
       "type": "java.lang.String",
-      "description": "Description for security.jwt.tokenSigningKey."
+      "description": "token signing key."
     },
     {
       "name": "security.jwt.tokenIssuer",
       "type": "java.lang.String",
-      "description": "Description for security.jwt.tokenIssuer."
+      "description": "token issuer."
     },
     {
       "name": "security.jwt.refreshTokenExpTime",
       "type": "java.lang.Integer",
-      "description": "Description for security.jwt.refreshTokenExpTime."
+      "description": "life time of refresh token."
     },
     {
       "name": "security.jwt.tokenExpirationTime",
       "type": "java.lang.Integer",
-      "description": "Description for security.jwt.tokenExpirationTime."
+      "description": "life time of access token. it should be refreshed while this value is not expire in other case user should login again."
     }
   ]
 }

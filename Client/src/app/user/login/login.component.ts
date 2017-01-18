@@ -21,7 +21,6 @@ export class LoginComponent {
     this.authService.login(this.user.username, this.user.password)
       .subscribe(
         data => {
-          alert('success!');
           this.router.navigate([('')])
         },
         error => {
