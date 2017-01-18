@@ -22,7 +22,7 @@ export class LoginComponent {
       .subscribe(
         data => {
           alert('success!');
-          this.router.navigate([('/home')])
+          this.router.navigate([('')])
         },
         error => {
           alert("error, while login");

@@ -4,15 +4,20 @@ import {RegisterComponent} from "./user/register/register.component";
 import {APP_BASE_HREF} from "@angular/common";
 import {LoginComponent} from "./user/login/login.component";
 import {HomeComponent} from "./home/home.component";
+import {LoginGuard} from "./guards/login.guard";
+
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent }
+  {path: '', component: HomeComponent},
+  {path: 'register', component: RegisterComponent, canActivate: [LoginGuard]},
+  {path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
+  {path: 'home', redirectTo: ''},
+
+  {path: '**', redirectTo: ''}
 ];
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ],
-  providers: [{provide: APP_BASE_HREF, useValue : '/'}]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+  providers: [{provide: APP_BASE_HREF, useValue: '/'}]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

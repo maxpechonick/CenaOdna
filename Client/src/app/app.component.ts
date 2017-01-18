@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {NgSpinningPreloader} from "ng2-spinning-preloader";
 import {AuthService} from "./services/auth.service";
-import {CategoryService} from "./services/category.service";
 
 @Component({
   selector: 'my-app',
@@ -11,11 +10,9 @@ export class AppComponent implements OnInit {
 
   private isLoggedIn: boolean;
 
-  constructor(
-    private ngSpinningPreloader: NgSpinningPreloader,
-    private authService: AuthService
-  ) {
-    this.isLoggedIn = !!authService.token;
+  constructor(private ngSpinningPreloader: NgSpinningPreloader,
+              private authService: AuthService) {
+    this.isLoggedIn = AuthService.loggedIn();
   }
 
   logout() {

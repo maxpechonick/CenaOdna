@@ -5,16 +5,19 @@ import {AppRoutingModule} from "./app-routing.module";
 import {FormsModule} from "@angular/forms";
 import {UserService} from "./services/user.service";
 import {RegisterComponent} from "./user/register/register.component";
-import {HttpModule} from "@angular/http";
+import {HttpModule, RequestOptions, Http} from "@angular/http";
 import {LoginComponent} from "./user/login/login.component";
 import {HomeComponent} from "./home/home.component";
-import { MaterializeModule } from 'angular2-materialize';
+import {MaterializeModule} from "angular2-materialize";
 import {NgSpinningPreloader} from "ng2-spinning-preloader";
 import {AuthService} from "./services/auth.service";
 import {CategoryService} from "./services/category.service";
+import {authHttpServiceFactory} from "./factories/auth.factory";
+import {AuthHttp, JwtHelper} from "angular2-jwt";
+import {LoginGuard} from "./guards/login.guard";
 
 @NgModule({
-  imports:      [
+  imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
@@ -31,10 +34,18 @@ import {CategoryService} from "./services/category.service";
     UserService,
     NgSpinningPreloader,
     AuthService,
-    CategoryService
+    CategoryService,
+    {
+      provide: AuthHttp,
+      useFactory: authHttpServiceFactory,
+      deps: [Http, RequestOptions]
+    },
+    JwtHelper,
+    LoginGuard
   ],
-  bootstrap:    [
+  bootstrap: [
     AppComponent
   ]
 })
-export class AppModule { }
+export class AppModule {
+}
