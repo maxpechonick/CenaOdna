@@ -25,10 +25,14 @@ export class UserService {
   }
 
   update(user: User) {
-    return this.http.put(`${webServiceEndpoint}/user/` + user.rid, user).map((response: Response) => response.json());
+    return this.http.put(`${webServiceEndpoint}/protected/user`, user).map((response: Response) => response.json());
   }
 
   delete(id: number) {
-    return this.http.delete(`${webServiceEndpoint}/user/` + id).map((response: Response) => response.json());
+    return this.http.delete(`${webServiceEndpoint}/protected/user/` + id).map((response: Response) => response.json());
+  }
+
+  getCurrentUser() {
+    return this.http.get(`${webServiceEndpoint}/protected/user/me`).map((response: Response) => response.json());
   }
 }

@@ -15,6 +15,10 @@ import {CategoryService} from "./services/category.service";
 import {authHttpServiceFactory} from "./factories/auth.factory";
 import {AuthHttp, JwtHelper} from "angular2-jwt";
 import {LoginGuard} from "./guards/login.guard";
+import {ProfileComponent} from "./user/profile/profile.component";
+import {AuthGuard} from "./guards/auth.guard";
+import { MaterialModule } from '@angular/material';
+import {SettingsComponent} from "./user/settings/settings.component";
 
 @NgModule({
   imports: [
@@ -22,13 +26,16 @@ import {LoginGuard} from "./guards/login.guard";
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    MaterializeModule
+    MaterializeModule,
+    [MaterialModule.forRoot()]
   ],
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ProfileComponent,
+    SettingsComponent
   ],
   providers: [
     UserService,
@@ -41,7 +48,8 @@ import {LoginGuard} from "./guards/login.guard";
       deps: [Http, RequestOptions]
     },
     JwtHelper,
-    LoginGuard
+    LoginGuard,
+    AuthGuard
   ],
   bootstrap: [
     AppComponent

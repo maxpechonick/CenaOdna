@@ -25,7 +25,7 @@ var UserService = (function () {
         return this.http.post('/api/user', user, this.jwt()).map(function (response) { return response.json(); });
     };
     UserService.prototype.update = function (user) {
-        return this.http.put('/api/user/' + user.rid, user, this.jwt()).map(function (response) { return response.json(); });
+        return this.http.put('/api/user/' + user.id, user, this.jwt()).map(function (response) { return response.json(); });
     };
     UserService.prototype.delete = function (id) {
         return this.http.delete('/api/user/' + id, this.jwt()).map(function (response) { return response.json(); });
@@ -40,7 +40,7 @@ var UserService = (function () {
         }
     };
     UserService = __decorate([
-        core_1.Injectable(), 
+        core_1.Injectable(),
         __metadata('design:paramtypes', [http_1.Http])
     ], UserService);
     return UserService;

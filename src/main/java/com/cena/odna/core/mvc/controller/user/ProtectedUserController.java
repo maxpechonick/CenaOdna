@@ -37,6 +37,12 @@ public class ProtectedUserController extends UserController {
         return new ResponseEntity<UserDTO>(user, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/me", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<UserDTO> getCurrentUser() {
+        UserDTO user = service.getCurrentUser();
+        return new ResponseEntity<UserDTO>(user, HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     public void delete(@PathVariable Long id) {
         try {

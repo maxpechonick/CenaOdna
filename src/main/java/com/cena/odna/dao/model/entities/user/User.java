@@ -4,6 +4,8 @@ import com.cena.odna.dao.model.core.ModelObject;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -44,6 +46,18 @@ public class User implements ModelObject {
 
     @Column(name = "LAST_NAME", nullable = false)
     private String lastName;
+
+    @Column(name = "EMAIL")
+    private String email;
+
+    @Column(name = "ABOUT", length = 500)
+    private String about;
+
+    @Column(name = "IMAGE", length = 1000)
+    private String image;
+
+    @Enumerated(value = EnumType.STRING)
+    private Sex sex;
 
     public String getFirstName() {
         return firstName;
@@ -100,5 +114,37 @@ public class User implements ModelObject {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Sex getSex() {
+        return sex;
+    }
+
+    public void setSex(Sex sex) {
+        this.sex = sex;
     }
 }

@@ -12,4 +12,5 @@ public interface UserService extends GenericService<UserDTO> {
 
     User findByUserName(String username);
 
+    UserDTO getCurrentUser();
 }

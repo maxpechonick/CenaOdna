@@ -5,12 +5,17 @@ import {APP_BASE_HREF} from "@angular/common";
 import {LoginComponent} from "./user/login/login.component";
 import {HomeComponent} from "./home/home.component";
 import {LoginGuard} from "./guards/login.guard";
+import {ProfileComponent} from "./user/profile/profile.component";
+import {AuthGuard} from "./guards/auth.guard";
+import {SettingsComponent} from "./user/settings/settings.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'register', component: RegisterComponent, canActivate: [LoginGuard]},
   {path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
   {path: 'home', redirectTo: ''},
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+  {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
 
   {path: '**', redirectTo: ''}
 ];

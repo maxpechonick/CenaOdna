@@ -1,6 +1,7 @@
 package com.cena.odna.dto.user;
 
 import com.cena.odna.dao.model.entities.user.Role;
+import com.cena.odna.dao.model.entities.user.Sex;
 import com.cena.odna.dto.core.AbstractDTO;
 
 import java.util.List;
@@ -16,6 +17,11 @@ public class UserDTO extends AbstractDTO {
     private String password;
     private String firstName;
     private String lastName;
+    private Sex sex;
+    private String email;
+    private String about;
+    private String image;
+
 
     public String getFirstName() {
         return firstName;
@@ -63,5 +69,37 @@ public class UserDTO extends AbstractDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Sex getSex() {
+        return sex;
+    }
+
+    public void setSex(Sex sex) {
+        this.sex = sex;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAbout() {
+        return about;
+    }
+
+    public void setAbout(String about) {
+        this.about = about;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

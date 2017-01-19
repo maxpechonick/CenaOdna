@@ -1,8 +1,12 @@
 export class User {
-  rid: number;
+  id: number;
   username :string;
   enabled: boolean;
   password: string;
   firstName: string;
   lastName: string;
+  email: string;
+  sex: string;
+  about: string;
+  image: string;
 }

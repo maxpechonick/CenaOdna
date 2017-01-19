@@ -21,6 +21,11 @@ public class UserServiceImpl extends GenericServiceImpl<UserFacade, UserDTO>
     }
 
     @Override
+    public UserDTO getCurrentUser() {
+        return facade.convertToDTO(facade.getAuthenticatedUser());
+    }
+
+    @Override
     protected UserFacade getFacade() {
         return facade;
     }
