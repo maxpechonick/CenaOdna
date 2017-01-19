@@ -11,6 +11,8 @@ import {UserService} from "../../services/user.service";
 export class SettingsComponent {
   user: User = new User;
 
+  //todo upload image and password change
+
   constructor(private userService: UserService,
               private router: Router) {
     userService.getCurrentUser().subscribe(
@@ -29,5 +31,13 @@ export class SettingsComponent {
         alert('error');
       }
     )
+  }
+
+  updatePassword() {
+
+  }
+
+  uploadImage() {
+
   }
 }
