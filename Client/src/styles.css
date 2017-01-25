@@ -4,8 +4,15 @@
 
 body {
   margin: 0;
+  background-image: url(http://creativecrunk.com/wp-content/uploads/2015/03/Color-1.jpg);
 }
 
 .unHighlight > .md-list-item {
-  background: rgba(0,0,0,0) !important;
+  background: rgba(0, 0, 0, 0) !important;
+}
+
+.cl-round > img {
+  border-radius: 360%;
+  margin-bottom: -12px;
+  margin-top: 12px;
 }

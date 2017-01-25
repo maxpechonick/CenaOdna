@@ -1,10 +1,10 @@
 package com.cena.odna.core.config.security.auth.jwt;
 
 import com.cena.odna.core.config.security.auth.JwtAuthenticationToken;
-import com.cena.odna.core.config.security.config.JwtSettings;
 import com.cena.odna.core.config.security.model.UserContext;
 import com.cena.odna.core.config.security.model.token.JwtToken;
 import com.cena.odna.core.config.security.model.token.RawAccessJwtToken;
+import com.cena.odna.core.config.settings.JwtSettings;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,16 +21,16 @@ import java.util.stream.Collectors;
 /**
  * An {@link AuthenticationProvider} implementation that will use provided
  * instance of {@link JwtToken} to perform authentication.
- * 
- * @author vladimir.stankovic
  *
- * Aug 5, 2016
+ * @author vladimir.stankovic
+ *         <p>
+ *         Aug 5, 2016
  */
 @Component
 @SuppressWarnings("unchecked")
 public class JwtAuthenticationProvider implements AuthenticationProvider {
     private final JwtSettings jwtSettings;
-    
+
     @Autowired
     public JwtAuthenticationProvider(JwtSettings jwtSettings) {
         this.jwtSettings = jwtSettings;
@@ -46,9 +46,9 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
         List<GrantedAuthority> authorities = scopes.stream()
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
-        
+
         UserContext context = UserContext.create(subject, authorities);
-        
+
         return new JwtAuthenticationToken(context, context.getAuthorities());
     }
 

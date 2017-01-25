@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component} from "@angular/core";
 import {User} from "../../entites/user";
 import {Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
@@ -9,13 +9,14 @@ import {UserService} from "../../services/user.service";
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent {
-  user: User = new User;
+  user: User = new User();
 
-  //todo upload image and password change
+  //todo password change
 
   constructor(private userService: UserService,
               private router: Router) {
-    userService.getCurrentUser().subscribe(
+    this.user = userService.getAuthUser();
+    userService.authData.subscribe(
       data => {
         this.user = data;
       }
@@ -34,10 +35,6 @@ export class SettingsComponent {
   }
 
   updatePassword() {
-
-  }
-
-  uploadImage() {
 
   }
 }

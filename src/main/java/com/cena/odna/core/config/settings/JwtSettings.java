@@ -1,4 +1,4 @@
-package com.cena.odna.core.config.security.config;
+package com.cena.odna.core.config.settings;
 
 import com.cena.odna.core.config.security.model.token.JwtToken;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -49,6 +49,7 @@ public class JwtSettings {
     public String getTokenIssuer() {
         return tokenIssuer;
     }
+
     public void setTokenIssuer(String tokenIssuer) {
         this.tokenIssuer = tokenIssuer;
     }

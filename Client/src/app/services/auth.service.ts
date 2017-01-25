@@ -1,7 +1,9 @@
-import {Injectable, Output, EventEmitter} from "@angular/core";
+import {Injectable, EventEmitter} from "@angular/core";
 import {Response, Http, Headers} from "@angular/http";
 import {AuthHttp, JwtHelper} from "angular2-jwt";
 import {Observable} from "rxjs";
+import {User} from "../entites/user";
+import {UserService} from "./user.service";
 
 
 const webServiceEndpoint: string = 'http://localhost:8080/api';
@@ -10,12 +12,13 @@ const webServiceEndpoint: string = 'http://localhost:8080/api';
 export class AuthService {
   refreshSubscription: any;
 
-  @Output() isLoggedIn: EventEmitter<boolean> = new EventEmitter();
+  isLoggedIn: EventEmitter<boolean> = new EventEmitter();
 
   constructor(private http: Http,
               private authHttp: AuthHttp,
-              private jwtHelper: JwtHelper
-  ) {}
+              private jwtHelper: JwtHelper,
+              private userSevice: UserService) {
+  }
 
   login(username: string, password: string) {
     return this.http.post(`${webServiceEndpoint}/auth/login`,
@@ -25,15 +28,24 @@ export class AuthService {
         let refresh = response.json() && response.json().refreshToken;
         if (token) {
           localStorage.setItem('token', token);
-          this.isLoggedIn.emit(true);
         }
         if (refresh) {
           localStorage.setItem('refresh', refresh);
         }
         if (response.status == 200) {
+          this.initAuthUser();
           this.startupTokenRefresh();
         }
       });
+  }
+
+  private initAuthUser() {
+    this.userSevice.getCurrentUser().subscribe(
+      data => {
+        this.userSevice.updateAuthUser(data);
+        this.isLoggedIn.emit(true);
+      }
+    )
   }
 
   logout() {
@@ -41,6 +53,7 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('refresh');
     this.isLoggedIn.emit(false);
+    this.userSevice.updateAuthUser(new User());
   }
 
   refreshToken() {

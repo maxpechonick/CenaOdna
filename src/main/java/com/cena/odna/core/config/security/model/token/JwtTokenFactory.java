@@ -1,8 +1,8 @@
 package com.cena.odna.core.config.security.model.token;
 
-import com.cena.odna.core.config.security.config.JwtSettings;
 import com.cena.odna.core.config.security.model.Scopes;
 import com.cena.odna.core.config.security.model.UserContext;
+import com.cena.odna.core.config.settings.JwtSettings;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

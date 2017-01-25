@@ -19,6 +19,21 @@
       "name": "security.jwt.tokenExpirationTime",
       "type": "java.lang.Integer",
       "description": "life time of access token. it should be refreshed while this value is not expire in other case user should login again."
+    },
+    {
+      "name": "cloudinary.cloudName",
+      "type": "java.lang.String",
+      "description": "cloud name of cloudinary repo."
+    },
+    {
+      "name": "cloudinary.apiKey",
+      "type": "java.lang.String",
+      "description": "api key of cloudinary repo."
+    },
+    {
+      "name": "cloudinary.apiSecret",
+      "type": "java.lang.String",
+      "description": "api key of cloudinary key."
     }
   ]
 }

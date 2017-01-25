@@ -24,6 +24,7 @@
         <querydsl-jpa.version>3.6.3</querydsl-jpa.version>
         <jjwt.version>0.6.0</jjwt.version>
         <commons-lang3.version>3.0</commons-lang3.version>
+        <cloudinary.version>1.6.0</cloudinary.version>
     </properties>
 
     <dependencies>
@@ -131,6 +132,13 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
+        </dependency>
+
+        <!--Cloudinary-->
+        <dependency>
+            <groupId>com.cloudinary</groupId>
+            <artifactId>cloudinary-http44</artifactId>
+            <version>${cloudinary.version}</version>
         </dependency>
 
 

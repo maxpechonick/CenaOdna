@@ -3,3 +3,8 @@ security.jwt:
   refreshTokenExpTime: 10080 # Minutes == 1 week
   tokenIssuer: http://localhost:4200
   tokenSigningKey: xm8EV6Hy5RMFK4EEACIDAwQus
+
+cloudinary:
+  cloudName: dlucqoyh6
+  apiKey: 124984516762691
+  apiSecret: ssgxtk-hGGfB7qOYwTqOXqutXN8

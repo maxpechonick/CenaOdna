@@ -6,11 +6,12 @@ import com.cena.odna.dao.exceptions.ManagerException;
 import com.cena.odna.dao.model.entities.user.User;
 import com.cena.odna.dao.repository.user.UserManager;
 import com.cena.odna.dto.user.UserDTO;
+import com.cena.odna.rest.file.PhotoUpload;
+import com.cena.odna.rest.file.UploadTools;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -83,6 +84,7 @@ public class UserFacadeImpl extends GenericFacadeImpl<UserManager, UserDTO, User
             throw new ServiceException("user with name '" + user.getUsername() + "' already exist");
         }
         user.setPassword(encoder.encode(user.getPassword()));
+        user.setImage(User.DEFAULT_IMAGE);
         try {
             getDAO().insert(user);
         } catch (ManagerException e) {
@@ -103,5 +105,24 @@ public class UserFacadeImpl extends GenericFacadeImpl<UserManager, UserDTO, User
     @Override
     public User findByUserName(String username) {
         return manager.findByUserName(username);
+    }
+
+    @Override
+    public User upload(PhotoUpload photoUpload) throws ManagerException {
+        User user = getAuthenticatedUser();
+        if (user == null) {
+            throw new ServiceException("user mustn't be equals null!");
+        }
+        String image = user.getImage();
+        try {
+            if (!User.DEFAULT_IMAGE.equals(image)) {
+                UploadTools.delete(image);
+            }
+            String upload = UploadTools.upload(photoUpload.getFile());
+            user.setImage(upload);
+        } catch (Exception e) {
+            logger.error("error while upload image", e);
+        }
+        return getDAO().update(user);
     }
 }

@@ -2,7 +2,6 @@ package com.cena.odna.core.config.security.endpoint;
 
 import com.cena.odna.core.config.security.auth.jwt.extractor.TokenExtractor;
 import com.cena.odna.core.config.security.auth.jwt.verifier.TokenVerifier;
-import com.cena.odna.core.config.security.config.JwtSettings;
 import com.cena.odna.core.config.security.config.WebSecurityConfig;
 import com.cena.odna.core.config.security.exceptions.InvalidJwtToken;
 import com.cena.odna.core.config.security.model.UserContext;
@@ -10,6 +9,7 @@ import com.cena.odna.core.config.security.model.token.JwtToken;
 import com.cena.odna.core.config.security.model.token.JwtTokenFactory;
 import com.cena.odna.core.config.security.model.token.RawAccessJwtToken;
 import com.cena.odna.core.config.security.model.token.RefreshToken;
+import com.cena.odna.core.config.settings.JwtSettings;
 import com.cena.odna.core.mvc.service.user.UserService;
 import com.cena.odna.dao.model.entities.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +31,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Created by Admin on 12.01.2017.
@@ -48,11 +46,13 @@ public class RefreshTokenEndpoint {
     private UserService userService;
     @Autowired
     private TokenVerifier tokenVerifier;
-    @Autowired @Qualifier("jwtHeaderTokenExtractor")
+    @Autowired
+    @Qualifier("jwtHeaderTokenExtractor")
     private TokenExtractor tokenExtractor;
 
-    @RequestMapping(value="/api/auth/token", method= RequestMethod.GET, produces={ MediaType.APPLICATION_JSON_VALUE })
-    public @ResponseBody
+    @RequestMapping(value = "/api/auth/token", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public
+    @ResponseBody
     JwtToken refreshToken(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String tokenPayload = tokenExtractor.extract(request.getHeader(WebSecurityConfig.JWT_TOKEN_HEADER_PARAM));
 

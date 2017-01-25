@@ -4,13 +4,17 @@ import com.cena.odna.core.mvc.service.core.page.Page;
 import com.cena.odna.core.mvc.service.core.page.Pageable;
 import com.cena.odna.dao.exceptions.ManagerException;
 import com.cena.odna.dto.user.UserDTO;
+import com.cena.odna.rest.file.PhotoUpload;
+import com.cena.odna.rest.file.PhotoUploadValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,5 +71,14 @@ public class ProtectedUserController extends UserController {
     public ResponseEntity<Page<UserDTO>> findAll(Pageable pageable) {
         Page<UserDTO> all = service.findAll(pageable);
         return new ResponseEntity<Page<UserDTO>>(all, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/upload", headers = ("content-type=multipart/*"), method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<UserDTO> uploadPhoto(@ModelAttribute PhotoUpload photoUpload, BindingResult result) {
+        PhotoUploadValidator validator = new PhotoUploadValidator();
+        validator.validate(photoUpload, result);
+        UserDTO dto = service.upload(photoUpload);
+
+        return new ResponseEntity<UserDTO>(dto, HttpStatus.OK);
     }
 }

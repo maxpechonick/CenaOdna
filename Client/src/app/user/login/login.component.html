@@ -1,24 +1,27 @@
-<div class="col-md-6 col-md-offset-3">
-  <h2>Login</h2>
-  <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-    <div class="row">
-      <div class="input-field col s12" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-        <input id="username" name="username" type="text" class="validate" [(ngModel)]="user.username"
-               #username="ngModel"
-               required/>
-        <label for="username">Username</label>
-        <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+<div class="container">
+  <div class="col-md-6 col-md-offset-3">
+    <h2>Login</h2>
+    <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+      <div class="row">
+        <div class="input-field col s12" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+          <input id="username" name="username" type="text" class="validate" [(ngModel)]="user.username"
+                 #username="ngModel"
+                 required/>
+          <label for="username">Username</label>
+          <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+        </div>
+        <div class="input-field col s12" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+          <input id="password" type="password" minlength="6" class="validate" name="password"
+                 [(ngModel)]="user.password"
+                 #password="ngModel" required/>
+          <label for="password">Password</label>
+          <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+        </div>
+        <div class="form-group">
+          <button [disabled]="loading" class="btn btn-primary"><i class="material-icons right">send</i>Login</button>
+          <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+        </div>
       </div>
-      <div class="input-field col s12" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-        <input id="password" type="password" minlength="6" class="validate" name="password" [(ngModel)]="user.password"
-               #password="ngModel" required/>
-        <label for="password">Password</label>
-        <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
-      </div>
-      <div class="form-group">
-        <button [disabled]="loading" class="btn btn-primary"><i class="material-icons right">send</i>Login</button>
-        <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
-      </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>

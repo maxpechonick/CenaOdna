@@ -1,100 +1,89 @@
-<div class="col-md-6 col-md-offset-3">
-  <h2>Settings</h2>
-  <br>
-  <md-list>
-    <md-divider></md-divider>
-    <h4 md-subheader style="background-color: whitesmoke">Profile image</h4>
-  </md-list>
-  <br>
-  <img class="circle" style="height: 15%; width: 15%;" src="https://pickaface.net/assets/images/slides/slide4.png"/>
-  <form name="form" (ngSubmit)="f.form.valid && uploadImage()" #f="ngForm" novalidate>
-    <div class="file-field input-field">
-      <div class="btn">
-        <span>File</span>
-        <input type="file">
+<div class="container">
+  <div class="col-md-6 col-md-offset-3">
+    <h2>Settings</h2>
+    <br>
+    <md-list>
+      <md-divider></md-divider>
+      <h4 md-subheader style="background-color: whitesmoke">Profile image</h4>
+    </md-list>
+    <br>
+    <image-upload [image]="user.image" [preview]="true"></image-upload>
+    <br>
+    <md-list>
+      <md-divider></md-divider>
+      <h4 md-subheader style="background-color: whitesmoke">Common info</h4>
+    </md-list>
+    <br>
+    <form name="form" (ngSubmit)="f.form.valid && update()" #f="ngForm" novalidate>
+      <div class="input-field col s6" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+        <input placeholder="{{user.firstName}}" id="firstName" type="text" class="validate" name="firstName"
+               [(ngModel)]="user.firstName"
+               #firstName="ngModel" required/>
+        <label for="firstName">First Name</label>
+        <div *ngIf="f.submitted && !firstName.valid" class="help-block">First Name is required</div>
       </div>
-      <div class="file-path-wrapper">
-        <input class="file-path validate" type="text">
+      <div class="input-field col s6" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+        <input placeholder="{{user.lastName}}" id="lastName" type="text" class="validate" name="lastName"
+               [(ngModel)]="user.lastName"
+               #lastName="ngModel" required/>
+        <label for="lastName">Last Name</label>
+        <div *ngIf="f.submitted && !lastName.valid" class="help-block">Last Name is required</div>
       </div>
-    </div>
-    <div class="form-group">
-      <button [disabled]="loading" class="btn btn-primary"><i class="material-icons right">send</i>Apply</button>
-    </div>
-  </form>
-  <br>
-  <md-list>
-    <md-divider></md-divider>
-    <h4 md-subheader style="background-color: whitesmoke">Common info</h4>
-  </md-list>
-  <br>
-  <form name="form" (ngSubmit)="f.form.valid && update()" #f="ngForm" novalidate>
-    <div class="input-field col s6" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-      <input placeholder="{{user.firstName}}" id="firstName" type="text" class="validate" name="firstName"
-             [(ngModel)]="user.firstName"
-             #firstName="ngModel" required/>
-      <label for="firstName">First Name</label>
-      <div *ngIf="f.submitted && !firstName.valid" class="help-block">First Name is required</div>
-    </div>
-    <div class="input-field col s6" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-      <input placeholder="{{user.lastName}}" id="lastName" type="text" class="validate" name="lastName"
-             [(ngModel)]="user.lastName"
-             #lastName="ngModel" required/>
-      <label for="lastName">Last Name</label>
-      <div *ngIf="f.submitted && !lastName.valid" class="help-block">Last Name is required</div>
-    </div>
-    <div class="input-field col s6" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-      <input placeholder="{{user.username}}" id="username" type="text" class="validate" name="username"
-             [(ngModel)]="user.username"
-             #username="ngModel" required/>
-      <label for="username">Username</label>
-      <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
-    </div>
-    <div class="input-field col s6">
-      <input placeholder="{{user.email}}" id="email" type="email" class="validate" name="email" [(ngModel)]="user.email"
-             #email="ngModel">
-      <label for="email" data-error="wrong" data-success="right">Email</label>
-    </div>
-    <div class="input-field col s6">
-      <i class="material-icons prefix">mode_edit</i>
-      <textarea placeholder="{{user.about}}" name="about" #about="ngModel" [(ngModel)]="user.about" id="about"
-                class="materialize-textarea" length="500"></textarea>
-      <label for="about">About</label>
-    </div>
-    <p>
-      <input [(ngModel)]="user.sex" #male="ngModel" value="MALE" class="with-gap" name="sex" type="radio" id="male"/>
-      <label for="male">Male</label>
-      <input [(ngModel)]="user.sex" #female="ngModel" value="FEMALE" class="with-gap" name="sex" type="radio"
-             id="female"/>
-      <label for="female">Female</label>
-    </p>
-    <div class="form-group">
-      <button [disabled]="loading" class="btn btn-primary"><i class="material-icons right">send</i>Apply</button>
-    </div>
-  </form>
-  <br>
-  <md-list>
-    <md-divider></md-divider>
-    <h4 md-subheader style="background-color: whitesmoke">Password settings</h4>
-  </md-list>
-  <br>
-  <form name="form" (ngSubmit)="f.form.valid && updatePassword()" #f="ngForm" novalidate>
-    <div class="input-field col s12" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-      <input id="password1" type="password" minlength="6" class="validate" required/>
-      <label for="password1">Old password</label>
-      <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
-    </div>
-    <div class="input-field col s12" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-      <input id="password2" type="password" minlength="6" class="validate" required/>
-      <label for="password2">Repeat old password</label>
-      <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
-    </div>
-    <div class="input-field col s12" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-      <input id="password3" type="password" minlength="6" class="validate" required/>
-      <label for="password3">New password</label>
-      <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
-    </div>
-    <div class="form-group">
-      <button [disabled]="loading" class="btn btn-primary"><i class="material-icons right">send</i>Apply</button>
-    </div>
-  </form>
+      <div class="input-field col s6" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+        <input placeholder="{{user.username}}" id="username" type="text" class="validate" name="username"
+               [(ngModel)]="user.username"
+               #username="ngModel" required/>
+        <label for="username">Username</label>
+        <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+      </div>
+      <div class="input-field col s6">
+        <input placeholder="{{user.email}}" id="email" type="email" class="validate" name="email"
+               [(ngModel)]="user.email"
+               #email="ngModel">
+        <label for="email" data-error="wrong" data-success="right">Email</label>
+      </div>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">mode_edit</i>
+        <textarea placeholder="{{user.about}}" name="about" #about="ngModel" [(ngModel)]="user.about" id="about"
+                  class="materialize-textarea" length="500"></textarea>
+        <label for="about">About</label>
+      </div>
+      <p>
+        <input [(ngModel)]="user.sex" #male="ngModel" value="MALE" class="with-gap" name="sex" type="radio" id="male"/>
+        <label for="male">Male</label>
+        <input [(ngModel)]="user.sex" #female="ngModel" value="FEMALE" class="with-gap" name="sex" type="radio"
+               id="female"/>
+        <label for="female">Female</label>
+      </p>
+      <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary"><i class="material-icons right">send</i>Apply</button>
+      </div>
+    </form>
+    <br>
+    <md-list>
+      <md-divider></md-divider>
+      <h4 md-subheader style="background-color: whitesmoke">Password settings</h4>
+    </md-list>
+    <br>
+    <form name="form" (ngSubmit)="f.form.valid && updatePassword()" #f="ngForm" novalidate>
+      <div class="input-field col s12" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+        <input id="password1" type="password" minlength="6" class="validate" required/>
+        <label for="password1">Old password</label>
+        <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+      </div>
+      <div class="input-field col s12" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+        <input id="password2" type="password" minlength="6" class="validate" required/>
+        <label for="password2">Repeat old password</label>
+        <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+      </div>
+      <div class="input-field col s12" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+        <input id="password3" type="password" minlength="6" class="validate" required/>
+        <label for="password3">New password</label>
+        <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+      </div>
+      <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary"><i class="material-icons right">send</i>Apply</button>
+      </div>
+    </form>
+  </div>
 </div>

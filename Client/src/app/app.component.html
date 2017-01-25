@@ -1,31 +1,25 @@
-<div class="jumbotron">
-  <div class="container">
-    <md-menu #menu="mdMenu">
-      <a md-menu-item style="color: deepskyblue" [routerLink]="['profile']">Profile</a>
-      <a md-menu-item style="color: deepskyblue" [routerLink]="['settings']">Settings</a>
-      <a md-menu-item style="color: deepskyblue" [routerLink]="['home']" (click)="logout()">Logout</a>
-    </md-menu>
-    <nav>
+<header>
+  <md-menu #menu="mdMenu">
+    <a md-menu-item style="color: deepskyblue" [routerLink]="['profile']">Profile</a>
+    <a md-menu-item style="color: deepskyblue" [routerLink]="['settings']">Settings</a>
+    <a md-menu-item style="color: deepskyblue" [routerLink]="['home']" (click)="logout()">Logout</a>
+  </md-menu>
+  <div class="navbar-fixed">
+    <nav class="navbar-color">
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo"><i class="material-icons">shop</i>CenaOdna</a>
+        <a href="#" class="brand-logo center">CenaOdna</a>
         <ul class="right hide-on-med-and-down">
-          <li>
-            <form>
-              <div class="input-field">
-                <input id="search" type="search" required>
-                <label for="search"><i class="material-icons">search</i></label>
-                <i class="material-icons">close</i>
-              </div>
-            </form>
-          </li>
           <!--user profile-->
           <li [hidden]="!isLoggedIn">
-            <md-nav-list>
-              <md-list-item class="unHighlight">
-                <img md-list-avatar src="https://pickaface.net/assets/images/slides/slide4.png"
-                     [md-menu-trigger-for]="menu"/>
+            <md-list [md-menu-trigger-for]="menu">
+              <md-list-item style="cursor: pointer;" class="unHighlight">
+                <cl-image height="40" width="40" crop="fill"
+                          class="cl-round" gravity="auto" public-id="{{user.image}}" cloud-name="dlucqoyh6"></cl-image>
+                <div style="margin-left: 10px" class="md-list-item-text">
+                  <p style="color: white">{{user.firstName}}</p>
+                </div>
               </md-list-item>
-            </md-nav-list>
+            </md-list>
           </li>
           <!--register-->
           <li [hidden]="isLoggedIn"><a [routerLink]="['register']">Registration</a></li>
@@ -34,15 +28,18 @@
         </ul>
       </div>
     </nav>
-    <router-outlet></router-outlet>
   </div>
-</div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-1
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  1
+</main>
 <!--todo: real footer-->
-<footer class="page-footer">
+<footer class="page-footer" style="margin-top: 0;">
   <div class="container">
     <div class="row">
       <div class="col l6 s12">
@@ -63,7 +60,7 @@
   <div class="footer-copyright">
     <div class="container">
       © 2016 Copyright Text
-      <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+      <a class="grey-text text-lighten-4 right" href="#">More Links</a>
     </div>
   </div>
 </footer>

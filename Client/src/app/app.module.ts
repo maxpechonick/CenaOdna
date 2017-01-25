@@ -17,8 +17,11 @@ import {AuthHttp, JwtHelper} from "angular2-jwt";
 import {LoginGuard} from "./guards/login.guard";
 import {ProfileComponent} from "./user/profile/profile.component";
 import {AuthGuard} from "./guards/auth.guard";
-import { MaterialModule } from '@angular/material';
+import {MaterialModule} from "@angular/material";
 import {SettingsComponent} from "./user/settings/settings.component";
+import {ImageUploadComponent} from "./common/upload/upload.component";
+import {FileUploadModule} from "ng2-file-upload";
+import {Ng2CloudinaryModule} from "ng2-cloudinary";
 
 @NgModule({
   imports: [
@@ -27,7 +30,9 @@ import {SettingsComponent} from "./user/settings/settings.component";
     HttpModule,
     AppRoutingModule,
     MaterializeModule,
-    [MaterialModule.forRoot()]
+    [MaterialModule.forRoot()],
+    FileUploadModule,
+    Ng2CloudinaryModule
   ],
   declarations: [
     AppComponent,
@@ -35,7 +40,8 @@ import {SettingsComponent} from "./user/settings/settings.component";
     LoginComponent,
     HomeComponent,
     ProfileComponent,
-    SettingsComponent
+    SettingsComponent,
+    ImageUploadComponent
   ],
   providers: [
     UserService,
