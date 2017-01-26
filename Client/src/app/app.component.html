@@ -1,34 +1,5 @@
 <header>
-  <md-menu #menu="mdMenu">
-    <a md-menu-item style="color: deepskyblue" [routerLink]="['profile']">Profile</a>
-    <a md-menu-item style="color: deepskyblue" [routerLink]="['settings']">Settings</a>
-    <a md-menu-item style="color: deepskyblue" [routerLink]="['home']" (click)="logout()">Logout</a>
-  </md-menu>
-  <div class="navbar-fixed">
-    <nav class="navbar-color">
-      <div class="nav-wrapper">
-        <a href="#" class="brand-logo center">CenaOdna</a>
-        <ul class="right hide-on-med-and-down">
-          <!--user profile-->
-          <li [hidden]="!isLoggedIn">
-            <md-list [md-menu-trigger-for]="menu">
-              <md-list-item style="cursor: pointer;" class="unHighlight">
-                <cl-image height="40" width="40" crop="fill"
-                          class="cl-round" gravity="auto" public-id="{{user.image}}" cloud-name="dlucqoyh6"></cl-image>
-                <div style="margin-left: 10px" class="md-list-item-text">
-                  <p style="color: white">{{user.firstName}}</p>
-                </div>
-              </md-list-item>
-            </md-list>
-          </li>
-          <!--register-->
-          <li [hidden]="isLoggedIn"><a [routerLink]="['register']">Registration</a></li>
-          <!--login-->
-          <li [hidden]="isLoggedIn"><a [routerLink]="['login']">Login</a></li>
-        </ul>
-      </div>
-    </nav>
-  </div>
+  <common-nav></common-nav>
 </header>
 
 <main>

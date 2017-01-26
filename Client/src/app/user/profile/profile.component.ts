@@ -13,11 +13,12 @@ export class ProfileComponent {
 
   constructor(private userService: UserService,
               private router: Router) {
-    userService.getCurrentUser().subscribe(
+    this.user = userService.getAuthUser();
+    userService.authData.subscribe(
       data => {
         this.user = data;
       }
-    )
+    );
   }
 
   ngOnInit(): void {

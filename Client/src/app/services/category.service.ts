@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Response} from "@angular/http";
+import {Response, Http} from "@angular/http";
 import {AuthHttp} from "angular2-jwt";
 import "rxjs/add/operator/map";
 
@@ -7,7 +7,8 @@ const webServiceEndpoint: string = 'http://localhost:8080/api';
 
 @Injectable()
 export class CategoryService {
-  constructor(private http: AuthHttp) {
+  constructor(private authHttp: AuthHttp,
+              private http: Http) {
   }
 
   getAll() {

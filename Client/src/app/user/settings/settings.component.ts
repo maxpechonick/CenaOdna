@@ -20,7 +20,7 @@ export class SettingsComponent {
       data => {
         this.user = data;
       }
-    )
+    );
   }
 
   update() {

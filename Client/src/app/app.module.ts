@@ -22,6 +22,7 @@ import {SettingsComponent} from "./user/settings/settings.component";
 import {ImageUploadComponent} from "./common/upload/upload.component";
 import {FileUploadModule} from "ng2-file-upload";
 import {Ng2CloudinaryModule} from "ng2-cloudinary";
+import {NavigationComponent} from "./common/navigation/navigation.component"
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import {Ng2CloudinaryModule} from "ng2-cloudinary";
     HomeComponent,
     ProfileComponent,
     SettingsComponent,
-    ImageUploadComponent
+    ImageUploadComponent,
+    NavigationComponent
   ],
   providers: [
     UserService,

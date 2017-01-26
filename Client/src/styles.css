@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import "../node_modules/materialize-css/dist/css/materialize.css";
+@import "../node_modules/materialize-css/dist/css/materialize.min.css";
 @import "../node_modules/ng2-spinning-preloader/dist/ng-spinning-preloader.css";
 
 body {
@@ -15,4 +15,20 @@ body {
   border-radius: 360%;
   margin-bottom: -12px;
   margin-top: 12px;
+}
+
+::-webkit-scrollbar
+{
+  width: 6px;  /* for vertical scrollbars */
+  height: 6px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: rgba(0, 0, 0, 0.5);
 }
