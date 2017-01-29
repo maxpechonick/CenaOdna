@@ -9,11 +9,12 @@ import com.cena.odna.dto.core.AbstractDTO;
 public class ProductDTO extends AbstractDTO {
 
     private String description;
-    private int length;
-    private int height;
-    private int width;
-    private int quantity;
+    private Integer length;
+    private Integer height;
+    private Integer width;
+    private Integer quantity;
     private CategoryDTO category;
+    private String name;
 
     public String getDescription() {
         return description;
@@ -23,35 +24,35 @@ public class ProductDTO extends AbstractDTO {
         this.description = description;
     }
 
-    public int getLength() {
+    public Integer getLength() {
         return length;
     }
 
-    public void setLength(int length) {
+    public void setLength(Integer length) {
         this.length = length;
     }
 
-    public int getHeight() {
+    public Integer getHeight() {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(Integer height) {
         this.height = height;
     }
 
-    public int getWidth() {
+    public Integer getWidth() {
         return width;
     }
 
-    public void setWidth(int width) {
+    public void setWidth(Integer width) {
         this.width = width;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
@@ -61,5 +62,13 @@ public class ProductDTO extends AbstractDTO {
 
     public void setCategory(CategoryDTO category) {
         this.category = category;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

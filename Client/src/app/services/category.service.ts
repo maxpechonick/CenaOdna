@@ -14,4 +14,8 @@ export class CategoryService {
   getAll() {
     return this.http.get(`${webServiceEndpoint}/category`).map((response: Response) => response.json());
   }
+
+  getCategory(id: number) {
+    return this.http.get(`${webServiceEndpoint}/category/${id}`).map((response: Response) => response.json());
+  }
 }

@@ -1,0 +1,92 @@
+<!--profile menu content-->
+<md-menu #menu="mdMenu">
+  <a md-menu-item style="color: deepskyblue" [routerLink]="['profile']">Profile</a>
+  <a md-menu-item style="color: deepskyblue" [routerLink]="['settings']">Settings</a>
+  <a md-menu-item style="color: deepskyblue" [routerLink]="['home']" (click)="logout()">Logout</a>
+</md-menu>
+
+<!--category menu content-->
+<ul id="categories" class="dropdown-content">
+  <li class="highlight" *ngFor="let category of categories">
+    <a [routerLink]="['category',category.id]">{{category.name}}</a>
+  </li>
+</ul>
+
+<nav class="z-depth-5">
+  <!--Collapse button -->
+  <a href="#" data-activates="mobile-slide" class="button-collapse"><i class="material-icons">menu</i></a>
+
+  <!--Content for mobile and medium screens-->
+  <div>
+    <ul class="side-nav lime accent-4 leftside-navigation ps-container ps-active-y" id="mobile-slide">
+      <!--login-->
+      <li class="hoverable" [hidden]="isLoggedIn"><a [routerLink]="['login']">Login</a></li>
+      <!--register-->
+      <li class="hoverable" [hidden]="isLoggedIn"><a [routerLink]="['register']">Registration</a></li>
+      <!--logout (should be the last!)-->
+      <li class="hoverable" [hidden]="!isLoggedIn">
+        <div class="userView">
+          <div class="background">
+            <img src="http://oxygennacdn3.oxygenna.com/wp-content/uploads/2015/11/18.jpg">
+          </div>
+          <a [routerLink]="['profile']">
+            <cl-image height="64" width="64" crop="fill"
+                      class="cl-round" gravity="auto" public-id="{{user.image}}" cloud-name="dlucqoyh6"></cl-image>
+          </a>
+          <a [routerLink]="['profile']">
+            {{user.firstName}} {{user.lastName}}
+          </a>
+          <a [routerLink]="['profile']">
+            {{user.email}}
+          </a>
+        </div>
+      </li>
+      <!--test collapsible via category-->
+      <li class="hoverable no-padding">
+        <ul class="collapsible" data-collapsible="accordion">
+          <li class="bold">
+            <a class="collapsible-header waves-effect waves-cyan">Categories</a>
+            <div class="collapsible-body" style="display: block;">
+              <ul>
+                <li class="lime accent-3 highlight" *ngFor="let category of categories">
+                  <a [routerLink]="['category',category.id]">{{category.name}}</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <!--user settings-->
+      <li class="hoverable" [hidden]="!isLoggedIn"><a [routerLink]="['settings']">Settings</a></li>
+      <!--logout (should be the last!)-->
+      <li class="hoverable" [hidden]="!isLoggedIn"><a [routerLink]="['home']" (click)="logout()">Logout</a></li>
+    </ul>
+  </div>
+
+  <!--Content for large screens-->
+  <div class="nav-wrapper">
+    <a [routerLink]="['home']" class="brand-logo">CenaOdna</a>
+    <ul class="right hide-on-med-and-down">
+      <!--categories-->
+      <li>
+        <a class="dropdown-button" href="#!" data-activates="categories">Categories<i class="material-icons right">arrow_drop_down</i></a>
+      </li>
+      <!--user profile-->
+      <li [hidden]="!isLoggedIn">
+        <md-list [md-menu-trigger-for]="menu">
+          <md-list-item style="cursor: pointer;" class="unHighlight">
+            <cl-image height="40" width="40" crop="fill"
+                      class="cl-round" gravity="auto" public-id="{{user.image}}" cloud-name="dlucqoyh6"></cl-image>
+            <div style="margin-left: 10px" class="md-list-item-text">
+              <p style="color: white">{{user.firstName}}</p>
+            </div>
+          </md-list-item>
+        </md-list>
+      </li>
+      <!--login-->
+      <li class="hoverable" [hidden]="isLoggedIn"><a [routerLink]="['login']">Login</a></li>
+      <!--register-->
+      <li class="hoverable" [hidden]="isLoggedIn"><a [routerLink]="['register']">Registration</a></li>
+    </ul>
+  </div>
+</nav>

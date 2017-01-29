@@ -8,6 +8,8 @@ import {LoginGuard} from "./guards/login.guard";
 import {ProfileComponent} from "./user/profile/profile.component";
 import {AuthGuard} from "./guards/auth.guard";
 import {SettingsComponent} from "./user/settings/settings.component";
+import {CategoryComponent} from "./category/category.component";
+import {ProductComponent} from "./product/product.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -16,6 +18,8 @@ const routes: Routes = [
   {path: 'home', redirectTo: ''},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
+  {path: 'category/:id', component: CategoryComponent},
+  {path: 'product/:id', component: ProductComponent},
 
   {path: '**', redirectTo: ''}
 ];

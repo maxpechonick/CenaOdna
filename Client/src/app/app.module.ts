@@ -8,10 +8,12 @@ import {RegisterComponent} from "./user/register/register.component";
 import {HttpModule, RequestOptions, Http} from "@angular/http";
 import {LoginComponent} from "./user/login/login.component";
 import {HomeComponent} from "./home/home.component";
+import {CategoryComponent} from "./category/category.component";
 import {MaterializeModule} from "angular2-materialize";
 import {NgSpinningPreloader} from "ng2-spinning-preloader";
 import {AuthService} from "./services/auth.service";
 import {CategoryService} from "./services/category.service";
+import {ProductService} from "./services/product.service";
 import {authHttpServiceFactory} from "./factories/auth.factory";
 import {AuthHttp, JwtHelper} from "angular2-jwt";
 import {LoginGuard} from "./guards/login.guard";
@@ -22,7 +24,9 @@ import {SettingsComponent} from "./user/settings/settings.component";
 import {ImageUploadComponent} from "./common/upload/upload.component";
 import {FileUploadModule} from "ng2-file-upload";
 import {Ng2CloudinaryModule} from "ng2-cloudinary";
-import {NavigationComponent} from "./common/navigation/navigation.component"
+import {NavigationComponent} from "./common/navigation/navigation.component";
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {ProductComponent} from "./product/product.component";
 
 @NgModule({
   imports: [
@@ -33,7 +37,8 @@ import {NavigationComponent} from "./common/navigation/navigation.component"
     MaterializeModule,
     [MaterialModule.forRoot()],
     FileUploadModule,
-    Ng2CloudinaryModule
+    Ng2CloudinaryModule,
+    [FlexLayoutModule.forRoot()]
   ],
   declarations: [
     AppComponent,
@@ -43,7 +48,9 @@ import {NavigationComponent} from "./common/navigation/navigation.component"
     ProfileComponent,
     SettingsComponent,
     ImageUploadComponent,
-    NavigationComponent
+    NavigationComponent,
+    CategoryComponent,
+    ProductComponent
   ],
   providers: [
     UserService,
@@ -57,7 +64,8 @@ import {NavigationComponent} from "./common/navigation/navigation.component"
     },
     JwtHelper,
     LoginGuard,
-    AuthGuard
+    AuthGuard,
+    ProductService
   ],
   bootstrap: [
     AppComponent

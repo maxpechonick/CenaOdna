@@ -1,0 +1,21 @@
+nav {
+    background: url(https://cdn.elegantthemes.com/blog/wp-content/uploads/2013/09/bg-5-full.jpg) fixed;
+}
+
+
+.collapsible-header{font-weight:500}
+.collapsible-header::after{  font-family: "Material Icons"; content: "\E315";
+  color: blue;float:right;font-size:18px}
+.collapsible-header.active::after{content:"\E313"}
+
+
+
+.highlight {
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  transition: all 0.3s ease-in-out;
+}
+.highlight:hover {
+  -webkit-transform: scale(1.05, 1.05);
+  transform: scale(1.05, 1.05);
+}

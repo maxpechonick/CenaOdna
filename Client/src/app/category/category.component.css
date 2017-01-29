@@ -1,0 +1,19 @@
+.gridOfCards {
+    padding: 2%;
+}
+
+.gridOfCards .card {
+    margin-right: 1%;
+    margin-bottom: 1%;
+    max-width: 300px;
+    min-width: 250px;
+}
+
+.halfway-fab {
+  
+    position: absolute !important;
+    right: 24px !important;
+    bottom: 0 !important;
+    -webkit-transform: translateY(50%) !important;
+    transform: translateY(50%) !important;
+}

@@ -1,7 +1,6 @@
 package com.cena.odna.dao.model.entities.product;
 
 import com.cena.odna.dao.model.core.ModelObject;
-import com.cena.odna.dao.model.entities.user.User;
 import com.cena.odna.dao.model.entities.category.Category;
 
 import javax.persistence.CascadeType;
@@ -12,13 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by Admin on 11.12.2016.
@@ -36,20 +31,23 @@ public class Product implements ModelObject {
     @Column(name = "PRODUCT_ID")
     private Long id;
 
+    @Column(name = "PRODUCT_NAME", nullable = false)
+    private String name;
+
     @Column(name = "PRODUCT_DESCRIPTION")
     private String description;
 
     @Column(name = "PRODUCT_LENGTH")
-    private int length;
+    private Integer length;
 
     @Column(name = "PRODUCT_WIDTH")
-    private int width;
+    private Integer width;
 
     @Column(name = "PRODUCT_HEIGHT")
-    private int height;
+    private Integer height;
 
     @Column(name = "PRODUCT_QUANTITY")
-    private int quantity;
+    private Integer quantity;
 
     @JoinColumn(name = "CATEGORY_ID", nullable = false)
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
@@ -79,36 +77,43 @@ public class Product implements ModelObject {
         this.description = description;
     }
 
-    public int getLength() {
+    public Integer getLength() {
         return length;
     }
 
-    public void setLength(int length) {
+    public void setLength(Integer length) {
         this.length = length;
     }
 
-    public int getWidth() {
+    public Integer getWidth() {
         return width;
     }
 
-    public void setWidth(int width) {
+    public void setWidth(Integer width) {
         this.width = width;
     }
 
-    public int getHeight() {
+    public Integer getHeight() {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(Integer height) {
         this.height = height;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

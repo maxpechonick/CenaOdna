@@ -50,6 +50,7 @@ public class ProductFacadeImpl extends GenericFacadeImpl<ProductManager, Product
         result.setLength(dto.getLength());
         result.setQuantity(dto.getQuantity());
         result.setWidth(dto.getWidth());
+        result.setName(dto.getName());
         try {
             result.setCategory(categoryFacade.convertToModel(categoryFacade.findByPK(dto.getCategory().getId())));
         } catch (ManagerException e) {
@@ -72,6 +73,7 @@ public class ProductFacadeImpl extends GenericFacadeImpl<ProductManager, Product
         result.setDescription(product.getDescription());
         result.setId(product.getId());
         result.setCategory(categoryFacade.convertToDTO(product.getCategory()));
+        result.setName(product.getName());
         return result;
     }
 

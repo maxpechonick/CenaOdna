@@ -1,8 +1,6 @@
 package com.cena.odna.core.mvc.controller.category;
 
 import com.cena.odna.core.mvc.service.category.CategoryService;
-import com.cena.odna.core.mvc.service.core.page.Page;
-import com.cena.odna.core.mvc.service.core.page.Pageable;
 import com.cena.odna.dao.exceptions.ManagerException;
 import com.cena.odna.dto.category.CategoryDTO;
 import org.slf4j.Logger;
@@ -16,6 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * Created by Admin on 22.12.2016.
@@ -31,8 +31,8 @@ public class CategoryController {
     protected CategoryService service;
 
     @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Page<CategoryDTO>> findAll(Pageable pageable) {
-        Page<CategoryDTO> result = service.findAll(pageable);
+    public ResponseEntity<List<CategoryDTO>> findAll() {
+        List<CategoryDTO> result = service.findAll();
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
